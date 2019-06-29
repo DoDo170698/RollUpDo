@@ -1,0 +1,45 @@
+﻿
+@{
+   
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+    ViewBag.Title = "Hình ảnh sau khi segcemention";
+    List<Entities.ViewModels.ImageInfo> imgs = (List<Entities.ViewModels.ImageInfo>)ViewBag.Images;
+    bool isSegment = ViewBag.isSegment == null ? false : (bool)ViewBag.isSegment;
+    int i = 0;
+}
+<div class="row">
+    <h2>Chọn ảnh up và phân đoạn</h2>
+    <form method="post" enctype="multipart/form-data" id="form">
+        <input type="file" name="image" id="image" onchange="this.form.submit()" />
+    </form>
+    <h2>Hình ảnh sau khi phân đoạn @ViewBag.Result</h2>
+    @if (isSegment)
+    {
+        foreach (var item in imgs.OrderBy(o => o.Name))
+        {
+            @*if (i % 4 != 0)
+                {
+                    <div class="col-md-12">
+                        <img src="@item.Uri" alt="@item.Name" />
+                        <span>@item.Name</span>
+                    </div>
+                }*@
+            <div class="cbp-item graphic">
+                <div class="cbp-caption">
+                    <div class="cbp-caption-defaultWrap">
+                        <img src="@item.Uri" alt="@item.Name" height="@item.Width" />
+                    </div>
+                    <div class="cbp-caption-activeWrap">
+                        <div class="cbp-l-caption-alignCenter">
+                            <div class="cbp-l-caption-body">
+                                <a>@item.Name</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+</div>
+

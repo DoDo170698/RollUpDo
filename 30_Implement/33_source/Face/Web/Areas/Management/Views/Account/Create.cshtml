@@ -1,0 +1,253 @@
+﻿@model Entities.Models.SystemManage.Account
+@{
+    ViewBag.Title = "Nhập tài khoản mới";
+    Layout = "~/Areas/Management/Views/Shared/_ManagementLayout.cshtml";
+    string CName = ViewBag.CName == null ? "Account" : ViewBag.CName;
+    string CText = ViewBag.Ctext == null ? "Tài khoản" : ViewBag.Ctext;
+    string CRout = ViewBag.CRout == null ? "tai-khoan" : ViewBag.CRout;
+   
+}
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <i class="fa fa-home"></i>
+        <a href="@Url.RouteUrl("ManagementHome")">Trang chủ</a>
+        <i class="fa fa-angle-right"></i>
+    </li>
+    <li>
+        <a href="@Url.RouteUrl("AccountIndex")">Danh sách @CText</a>
+        <i class="fa fa-angle-right"></i>
+    </li>
+    <li class="active">
+        Nhập tài khoản mới
+    </li>
+</ul>
+@*Bắt đầu nội dung tùy chỉnh*@
+<div class="row">
+    <div class="col-md-12">
+        <div class="tab-pane" id="tab_6">
+            <div class="portlet box grey-cascade">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-user"></i>Nhập @CText mới
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    @using (Html.BeginForm("Create", CName, FormMethod.Post, new { @class = "form-horizontal form-bordered form-row-stripped", @enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                    <div class="form-body">
+                        @if (!ViewData.ModelState.IsValid)
+                        {
+                            <div class="alert alert-danger">
+                                <button data-close="alert" class="close"></button>
+                                @Html.ValidationSummary(true)
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Email)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FullName, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.FullName)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.IdDonVi, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.DropDownList("IdDonVi", null, "---Chọn đơn vị---", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.IdDonVi)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @type = "password" })
+                                </div>
+                                @Html.ValidationMessageFor(model => model.Password)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PhoneNumber, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.PhoneNumber)
+                            </div>
+                        </div>
+
+                      
+                        <div class="form-group" id="loadChucVu">
+                            @Html.LabelFor(model => model.IDCapQuanLy, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.DropDownList("IDCapQuanLy", null, "---Chọn chức vụ---", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.IDCapQuanLy)
+                            </div>
+                        </div>
+
+                        <div class="form-group last">
+                            @Html.LabelFor(model => model.ProfilePicture, new { @class = "col-md-3 control-label" })
+                            @Html.HiddenFor(model => model.ProfilePicture)
+                            <div class="col-md-9">
+
+                                <div>
+                                    <div class="col-md-3 thumbnail" style="height:150px;">
+                                        <img id="Image_Preview" src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=No+image" alt="" style="height:100%;" />
+                                    </div>
+                                    <div class="col-md-4" style="line-height:150px;">
+                                        <input type="file" name="file" id="file" style="width:0; height:0;" />
+                                        <input type="hidden" id="CheckValidFileType" value="" />
+                                        <button type="button" class="btn btn-default select-image"><i class="fa fa-sm"></i> Chọn ảnh</button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button type="submit" class="btn green"><i class="fa fa-check"></i> Ghi nhận</button>
+                                    <a href="@Url.RouteUrl("AccountIndex")" class="btn default">Hủy bỏ</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/js/metronic/jqueryval")
+    @Styles.Render("~/css/metronic/bootstrap-select")
+    <script type="text/javascript" src="~/Editor/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            $('#IdDonVi').change(function () {
+                $.blockUI({
+                    message: 'Vui lòng đợi!',
+                    overlayColor: 'none',
+                    cenrerY: true,
+                    boxed: true,
+                    zIndex: 99999,
+                    target: '#loadChucVu'
+                });
+                var donvi = $('#IdDonVi').val();
+                var url = '@Url.RouteUrl("ChucVu_List")?IdDonVi=' + donvi;
+                //location.href = url;
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    success: function (result) {
+                      //  $("#loadChucVu").innerHTML = result;
+                        var secondDdl = $('#IDCapQuanLy');
+                        secondDdl.empty();
+                        $.each(result, function () {
+                            secondDdl.append(
+                                $('<option/>', {
+                                    value: this.Id,
+                                    html: this.Name
+                                })
+                            );
+                        });
+                    },
+                    error: function (data) {
+                        alert('Đã sảy ra lỗi trong quá trình xử lý');
+                    },
+                    complete: function (result) {
+                        $.unblockUI();
+                    }
+                });
+            });
+
+
+
+            $('#Email').focus();
+
+            $("input").attr("autocomplete","off");
+
+
+            var formatSel2 = function (state, data) {
+                
+
+                $("#TenDonVi").val(state.TenDV);
+                $("#IdDonVi").val(state.IdDV);
+                $("#PhoneNumber").val(state.DienThoaiDiDong);
+                $("#Name").val(state.HoTenKhaiSinh);
+
+                return state.text; // optgroup
+
+            };
+            
+            var formatSel23 = function (state, data) {
+                if (Object.keys(state).length <= 2) {
+                    return state.text;
+                }
+                return state.text + " - " + state.HoTenKhaiSinh + " - " + state.TenDV; // optgroup
+
+            };
+
+
+            //$('#CapQuanLy').select2({
+            //    placeholder: "---Tất cả---",
+            //    allowClear: false
+            //});
+
+            @if (ViewBag.noname!=null)
+            {
+                @:$("#Email").select2("data", [{ "id": "@Html.Raw(ViewBag.noname)", "text": "@Html.Raw(ViewBag.noname)" }]);
+            }
+
+            $(document).on('click', '.select-image', function () {
+                $('#file').click();
+            });
+            $('input:file').change(function (e) {
+                $('#CheckValidFileType').val('');
+                var files = e.originalEvent.target.files;
+                for (var i = 0, len = files.length; i < len; i++) {
+                    var n = files[i].name,
+                        s = files[i].size,
+                        t = files[i].type;
+                    var ext = n.split('.').pop().toLowerCase();
+                    if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg', 'bmp']) == -1) {
+                        var msg1 = 'Ảnh không hợp lệ! \nChỉ chấp nhận các loại tệp tin ảnh: gif, png, jpg, jpeg, bmp\nVui lòng chọn ảnh khác!';
+                        $('#CheckValidFileType').val(msg1);
+                        alert(msg1);
+                    }
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#Image_Preview').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(files[i]);
+                }
+            });
+            $('form').on('submit', function (e) {
+                if ($('#CheckValidFileType').val() != '') {
+                    alert($('#CheckValidFileType').val());
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+}
