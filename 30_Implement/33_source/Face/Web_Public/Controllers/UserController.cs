@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Web_Public.Handler;
+using Web_Public.Interface;
 using Web_Public.Mapping;
 
 namespace Web_Public.Controllers
 {
     public class UserController : BaseController
     {
-        UserHandler _handler = new UserHandler(_repository);
+        //  UserHandler _handler = new UserHandler(_repository);
+        IUser _handler;
         public UserController()
         {
             Log = log4net.LogManager.GetLogger(typeof(UserController));
