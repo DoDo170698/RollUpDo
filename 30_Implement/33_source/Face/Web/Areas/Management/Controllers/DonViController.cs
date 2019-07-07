@@ -1,7 +1,7 @@
 ﻿using Common.Helpers;
-using Entities.Enums;
-using Entities.Models;
-using Entities.Models.SystemManage;
+using CoreEntities.Enums;
+using CoreEntities.Models;
+using CoreEntities.Models.SystemManage;
 using Interface;
 using System;
 using System.Collections.Generic;

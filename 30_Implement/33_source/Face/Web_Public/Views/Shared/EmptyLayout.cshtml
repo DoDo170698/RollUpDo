@@ -1,0 +1,30 @@
+﻿@model Entities.ViewModels.AppConfig
+@{
+    var head = (Entities.ViewModels.HeadViewModel)ViewBag.HeadView; 
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@(ViewBag.Title == null ? head.Title: ViewBag.Title) </title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/css/Login")
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="@head.Description" name="description" />
+    <meta content="@head.Authen" name="author" />
+    <meta content="@head.Company" name="Company" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body>
+   
+
+    @Scripts.Render("~/Content/js")
+    @Scripts.Render("~/Sctipt/Login")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

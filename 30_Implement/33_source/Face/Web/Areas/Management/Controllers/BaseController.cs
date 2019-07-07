@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System;
 using Common.Helpers;
 using Web.Helpers;
-using Entities.Models;
+using CoreEntities.Models;
 
 namespace Web.Areas.Management.Controllers
 {

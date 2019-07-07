@@ -1,13 +1,13 @@
-﻿using Entities.Models;
+﻿using CoreEntities.Models;
 using Interface;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Web.Helpers;
 using System;
 using System.Linq;
-using Entities.ViewModels;
+using CoreEntities.ViewModels;
 using System.Text;
-using Entities.Models.SystemManage;
+using CoreEntities.Models.SystemManage;
 namespace Web.Areas.Management.Controllers
 {
     [RouteArea("Management", AreaPrefix = "quan-ly")]

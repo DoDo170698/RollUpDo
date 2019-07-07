@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Common.Helpers;
-using Entities.Models.SystemManage;
+using CoreEntities.Models.SystemManage;
 
 namespace Web.HtmlHelpers
 {

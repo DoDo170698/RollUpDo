@@ -1,4 +1,4 @@
-﻿using Entities.ViewModels;
+﻿using CoreEntities.ViewModels;
 using SegmentText;
 using System;
 using System.Collections.Generic;

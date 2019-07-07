@@ -100,10 +100,15 @@ namespace Entities.Models.SystemManage
 
         //Danh sách liên kết cuối trang
         public long? BottomMenu { get; set; }
+        public bool Activate { get; set; }
 
         public string Describe()
         {
             return "SystemInformation";
+        }
+        public SystemInformation()
+        {
+            Activate = false;
         }
     }
 }

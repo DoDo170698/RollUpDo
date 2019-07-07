@@ -27,7 +27,7 @@ namespace Entities.Models
         public bool An { get; set; }
         public string NoiDung { get; set; }
         [ForeignKey("AccountId")]
-        public virtual Account AccountNguoiNhan { get; set; }
+        public virtual Person AccountNguoiNhan { get; set; }
         public string Describe()
         {
             return "";

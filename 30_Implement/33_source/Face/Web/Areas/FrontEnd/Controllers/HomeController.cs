@@ -1,4 +1,4 @@
-﻿using Entities.Models;
+﻿using CoreEntities.Models;
 using System.Web.Mvc;
 using System;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
-using Entities.Enums;
+using CoreEntities.Enums;
 using Web.Areas.Management.Filters;
 using Common.Helpers;
 using System.Net;
@@ -14,7 +14,7 @@ using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using System.Web;
 using System.Runtime.InteropServices;
-using Entities.Models.SystemManage;
+using CoreEntities.Models.SystemManage;
 
 namespace Web.Areas.FrontEnd.Controllers
 {

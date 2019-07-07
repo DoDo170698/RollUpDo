@@ -1,4 +1,4 @@
-﻿using Entities.Models.SystemManage;
+﻿using CoreEntities.Models.SystemManage;
 using System;
 using System.Collections.Generic;
 using System.Linq;

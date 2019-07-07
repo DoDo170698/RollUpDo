@@ -1,4 +1,4 @@
-﻿using Entities.Enums;
+﻿using CoreEntities.Enums;
 using System;
 using System.IO;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Common.Helpers;
-using Entities.Models.SystemManage;
+using CoreEntities.Models.SystemManage;
 using Web.Areas.Management.Filters;
 using Web.Areas.Management.Helpers;
 namespace Web.Areas.Management.Controllers

@@ -1,5 +1,4 @@
 ﻿using ClientApp.Commons;
-using ClientApp.Handler;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using log4net;
@@ -33,42 +32,42 @@ namespace ClientApp.FormTests
         {
           
         }
-        void Test()
-        {
-            _logger.Debug("-----load start----------");
+        //void Test()
+        //{
+        //    _logger.Debug("-----load start----------");
 
            
-            string modelFiles = _dir;
+        //    string modelFiles = _dir;
             
-            API.Load_Model(Path.Combine(_dir, "lib", "pcn_model", "PCN-1.prototxt"), Path.Combine(_dir, "lib", "pcn_model", "PCN-2.prototxt"),
-                Path.Combine(_dir, "lib", "pcn_model", "PCN-3.prototxt"), Path.Combine(_dir, "lib", "pcn_model", "PCN.caffemodel"));
+        //    API.Load_Model(Path.Combine(_dir, "lib", "pcn_model", "PCN-1.prototxt"), Path.Combine(_dir, "lib", "pcn_model", "PCN-2.prototxt"),
+        //        Path.Combine(_dir, "lib", "pcn_model", "PCN-3.prototxt"), Path.Combine(_dir, "lib", "pcn_model", "PCN.caffemodel"));
 
-            //List<string> models = Commons.FileAndFolder.GetFiles(@"F:\lib\pcn_model", "prototxt");
-            //foreach (var item in models)
-            //{
-            //    Emgu.CV.Dnn.DnnInvoke.ShrinkCaffeModel("PCN-1.prototxt", "PCN.caffemodel");
-            //}
+        //    //List<string> models = Commons.FileAndFolder.GetFiles(@"F:\lib\pcn_model", "prototxt");
+        //    //foreach (var item in models)
+        //    //{
+        //    //    Emgu.CV.Dnn.DnnInvoke.ShrinkCaffeModel("PCN-1.prototxt", "PCN.caffemodel");
+        //    //}
             
-            //Handler.Native.FaceKit();
-            Commons.FileAndFolder.CreateFolderIfNotExist(Path.Combine(_dir, "OUT"));
-            var listFace = API.FaceKit(Path.Combine(_dir, "lib", "image", "OLD.jpg"), Path.Combine(_dir, "OUT"));
+        //    //Handler.Native.FaceKit();
+        //    Commons.FileAndFolder.CreateFolderIfNotExist(Path.Combine(_dir, "OUT"));
+        //    var listFace = API.FaceKit(Path.Combine(_dir, "lib", "image", "OLD.jpg"), Path.Combine(_dir, "OUT"));
 
 
-            //   API.FaceKit(Path.Combine(_dir, "lib", "image", "OLD.jpg"), Path.Combine(_dir, "OUT"));
-            //Image<Bgr, byte> image = new Image<Bgr, byte>(Path.Combine(_dir, "lib", "image", "OLD.jpg"));
-            //var listFace = API.GetFace(image, 30);
-            //Debug.WriteLine("Có {0} hình trong bức ảnh", listFace.Count());
+        //    //   API.FaceKit(Path.Combine(_dir, "lib", "image", "OLD.jpg"), Path.Combine(_dir, "OUT"));
+        //    //Image<Bgr, byte> image = new Image<Bgr, byte>(Path.Combine(_dir, "lib", "image", "OLD.jpg"));
+        //    //var listFace = API.GetFace(image, 30);
+        //    //Debug.WriteLine("Có {0} hình trong bức ảnh", listFace.Count());
 
            
-        }
-        List<Mat> deteciton(Image<Bgr, byte> frame, string outFolderFace = null, int maxFace = 30)
-        {
-            API.Load_Model(Path.Combine(_dir, "lib", "pcn_model", "PCN-1.prototxt"), Path.Combine(_dir, "lib", "pcn_model", "PCN-2.prototxt"),
-               Path.Combine(_dir, "lib", "pcn_model", "PCN-3.prototxt"), Path.Combine(_dir, "lib", "pcn_model", "PCN.caffemodel"));
-            Commons.FileAndFolder.CreateFolderIfNotExist(Path.Combine(_dir, "target"));
-            var listFace = API.GetFace(frame,outFolderFace, maxFace);
-            return listFace;
-        }
+        //}
+        //List<Mat> deteciton(Image<Bgr, byte> frame, string outFolderFace = null, int maxFace = 30)
+        //{
+        //    API.Load_Model(Path.Combine(_dir, "lib", "pcn_model", "PCN-1.prototxt"), Path.Combine(_dir, "lib", "pcn_model", "PCN-2.prototxt"),
+        //       Path.Combine(_dir, "lib", "pcn_model", "PCN-3.prototxt"), Path.Combine(_dir, "lib", "pcn_model", "PCN.caffemodel"));
+        //    Commons.FileAndFolder.CreateFolderIfNotExist(Path.Combine(_dir, "target"));
+        //    var listFace = API.GetFace(frame,outFolderFace, maxFace);
+        //    return listFace;
+        //}
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -98,8 +97,8 @@ namespace ClientApp.FormTests
                 cam.Retrieve(_frame, 0);
                 pcCam.Image = _frame.ToImage<Bgr, byte>().Resize(pcCam.Width, pcCam.Height,Emgu.CV.CvEnum.Inter.Area).Bitmap;
 
-                var list = deteciton(_frame.ToImage<Bgr, byte>(), Path.Combine(_dir, "OUT"));
-                Debug.WriteLine(list.Where(o=>o.IsEmpty!= true).Count());
+                //var list = deteciton(_frame.ToImage<Bgr, byte>(), Path.Combine(_dir, "OUT"));
+                //Debug.WriteLine(list.Where(o=>o.IsEmpty!= true).Count());
             }
         }
     }

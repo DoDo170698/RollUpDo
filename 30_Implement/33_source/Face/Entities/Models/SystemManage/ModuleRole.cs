@@ -6,7 +6,7 @@ namespace Entities.Models.SystemManage
     /// <summary>
     /// Chức năng thuộc nhóm quyền
     /// </summary>
-    [Table("ModuleRole")]
+    //[Table("ModuleRole")]
     public class ModuleRole : Entity
     {
         [Key]

@@ -14,7 +14,7 @@ namespace Entities.Models.SystemManage
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
-        public long AccountId { get; set; }
+        public long UserId { get; set; }
         //Thời gian yêu cầu khôi phục mật khẩu
         public DateTime RequestTime { get; set; }
         //Mã xác nhận
@@ -43,7 +43,7 @@ namespace Entities.Models.SystemManage
 
         public string Describe()
         {
-            return "{ AccountId : \"" + AccountId + "\", RequestTime : \"" + RequestTime + "\" }";
+            return "{ AccountId : \"" + UserId + "\", RequestTime : \"" + RequestTime + "\" }";
         }
     }
 }

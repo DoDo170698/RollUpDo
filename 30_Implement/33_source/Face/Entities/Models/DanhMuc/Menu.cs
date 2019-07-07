@@ -11,11 +11,7 @@ namespace Entities.Models
     {
         [Key]
         public long Id { get; set; }
-        #region const
-        public DateTime CreateDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
-        public bool? IsDeleted { get; set; }
-        #endregion
+       
         [Display(Name = "Tên")]
         public string Name { get; set; }
 
@@ -26,12 +22,19 @@ namespace Entities.Models
         public string Description { get; set; }
 
         [Display(Name = "Cấp Menu")]
-        public int Cap { get; set; }
+        public int Index { get; set; }
 
-        [Display(Name = "Đơn vị quản lý trực tiếp")]
+        [Display(Name = "Cha")]
         public long? IdCha { get; set; }
         [ForeignKey("IdCha")]
         public virtual Menu Menus { get; set; }
+        #region const
+        public DateTime CreateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
+        public bool? IsDeleted { get; set; }
+
+        #endregion
+
         public Menu()
         {
             CreateDate = DateTime.Now;

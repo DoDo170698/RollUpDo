@@ -1,4 +1,4 @@
-﻿using Entities.Enums;
+﻿using CoreEntities.Enums;
 using System;
 using System.Web;
 using System.Web.Mvc;

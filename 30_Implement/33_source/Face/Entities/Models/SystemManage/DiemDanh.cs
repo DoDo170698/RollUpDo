@@ -14,10 +14,17 @@ namespace Entities.Models.SystemManage
         [Key]
         public long Id { get; set; }
         [Required]
-        [Display(Name = "Id sinh viên")]
-        public long HocSinhId { get; set; }
+        [Display(Name = "Người")]
+        public long PersonId { get; set; }
         public int TinhTrang { get; set; }
         public DateTime CreateDate { get; set; }
+        [Display(Name = "Mô tả")]
+        public string Description { get; set; }
+
+        public int? IDBot { get; set; }
+
+        [ForeignKey("PersonId")]
+        public virtual Person Person { get; set; }
 
         public string Describe()
         {

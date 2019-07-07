@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Entities.Models.SystemManage;
+using CoreEntities.Models.SystemManage;
 
 namespace Web.Controllers
 {

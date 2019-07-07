@@ -1,9 +1,9 @@
-﻿using Entities.Enums;
+﻿using CoreEntities.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Common.Helpers;
-using Entities.Models.SystemManage;
+using CoreEntities.Models.SystemManage;
 using Interface;
 using System.Web.Mvc;
 

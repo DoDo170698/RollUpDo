@@ -31,7 +31,7 @@ namespace Entities.Models.SystemManage
 
         [Display(Name = "Cấp người dùng ")]
         public bool IsLevel3 { get; set; }
-        public virtual ICollection<AccountRole> AccountRoles { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
         public virtual ICollection<ModuleRole> RoleModules { get; set; }
 
         public string Describe()

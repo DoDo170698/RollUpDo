@@ -14,7 +14,6 @@ namespace Entities.ViewModels
         public string ControllerName { get; set; }
         public bool Disabled { get; set; }
         public string RouteName { get; set; }
-        public Enums.ModuleEnum Module { get; set; }
         public string Color { get; set; }
         public List<Enums.ActionEnum> Actions { get; set; }
         public int OrdinalNumber { get; set; }

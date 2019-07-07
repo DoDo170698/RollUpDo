@@ -1,5 +1,5 @@
 ﻿using Common.Helpers;
-using Entities.Models.SystemManage;
+using CoreEntities.Models.SystemManage;
 using Interface;
 using Microsoft.Office.Core;
 using System;

@@ -1,5 +1,5 @@
-﻿using Entities.Enums;
-using Entities.ViewModels;
+﻿using CoreEntities.Enums;
+using CoreEntities.ViewModels;
 using System;
 using System.IO;
 using System.Linq;
@@ -9,9 +9,9 @@ using System.Web;
 using System.Web.Mvc;
 using Common.Helpers;
 using Common.Paging;
-using Entities.Models.SystemManage;
+using CoreEntities.Models.SystemManage;
 using Web.Areas.Management.Filters;
-using Entities.Models;
+using CoreEntities.Models;
 
 namespace Web.Areas.Management.Controllers
 {

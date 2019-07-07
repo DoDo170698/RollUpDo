@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Common;
-using Entities.Models.SystemManage;
+using CoreEntities.Models.SystemManage;
 using Interface;
 using Web.Areas.FrontEnd.Interfaces;
 
@@ -20,9 +20,9 @@ namespace Web.Areas.FrontEnd.Handlers
         {
             _repository = repository;
         }
-        IGenericRepository<Entities.Models.SystemManage.DiemDanh> getRepon()
+        IGenericRepository<CoreEntities.Models.SystemManage.DiemDanh> getRepon()
         {
-            return _repository.GetRepository<Entities.Models.SystemManage.DiemDanh>();
+            return _repository.GetRepository<CoreEntities.Models.SystemManage.DiemDanh>();
         }
         public async Task<ExecuteResult> DiemDanhAsync(long id)
         {

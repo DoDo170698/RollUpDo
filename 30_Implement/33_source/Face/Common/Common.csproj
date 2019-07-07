@@ -56,6 +56,7 @@
     <Compile Include="CustomAttributes\ModuleAttributes.cs" />
     <Compile Include="Enums\EnumHelpers.cs" />
     <Compile Include="Enums\StringEnum.cs" />
+    <Compile Include="FileHelper\XMLHelper.cs" />
     <Compile Include="PostResult.cs" />
     <Compile Include="ExecuteResult.cs" />
     <Compile Include="Helpers\Base64Hepler.cs" />

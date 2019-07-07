@@ -1,4 +1,4 @@
-﻿using Entities.ViewModels;
+﻿using CoreEntities.ViewModels;
 using Interface;
 using System;
 using System.Linq;
@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Common.Helpers;
-using Entities.Models.SystemManage;
-using Entities.Models;
+using CoreEntities.Models.SystemManage;
+using CoreEntities.Models;
 using System.Web;
 using System.IO;
 

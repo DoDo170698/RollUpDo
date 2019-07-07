@@ -1,4 +1,4 @@
-﻿using Entities.Models;
+﻿using CoreEntities.Models;
 using System.Web.Mvc;
 using System;
 using System.Linq;
