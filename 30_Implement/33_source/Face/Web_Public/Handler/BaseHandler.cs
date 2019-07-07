@@ -19,10 +19,16 @@ namespace Web_Public.Handler
         {
             get
             {
-                // get trong Session ra nha ở đây a ms đê rlà 0
-                return 0;
+              
+                object objAccountId = System.Web.HttpContext.Current.Session[SessionEnum.UserID];
+                long _AccountId = -1;
+                if (objAccountId == null)
+                    _AccountId = -1;
+                else
+                    _AccountId = Convert.ToInt64(objAccountId.ToString());
+                return _AccountId;
             }
-            //set { Session[SessionEnum.UserId] = value; }
+            set { System.Web.HttpContext.Current.Session[SessionEnum.UserID] = value; }
         }
         protected static log4net.ILog Log { get; set; }
         public BaseHandler(IRepository repository)

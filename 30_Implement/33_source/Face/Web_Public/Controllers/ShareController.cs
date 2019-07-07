@@ -28,9 +28,21 @@ namespace Web_Public.Controllers
             mapper = config.CreateMapper();
         }
         // GET: Share
-        public ActionResult Index()
+        public async Task<ActionResult> Index(string code)
         {
-            return View();
+            if(code == "nckhsv")
+            {
+                var x = await InitDataBase(false);
+                Debug.WriteLine(string.Format("Khởi tạo {0} bản ghi", x));
+                return Json("Khởi tạo database với "+ x +" bản ghi", JsonRequestBehavior.AllowGet);
+            }
+            if (code == "reInit")
+            {
+                var x = await InitDataBase(true);
+                Debug.WriteLine(string.Format("Khởi tạo {0} bản ghi", x));
+                return Json("Khởi tạo lại database với " + x + " bản ghi", JsonRequestBehavior.AllowGet);
+            }
+            return Json("Khởi tạo data base lỗi rồi ", JsonRequestBehavior.AllowGet);
         }
         public async Task<ActionResult> EmptyLayout()
         {

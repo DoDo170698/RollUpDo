@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Helpers;
 using Entities.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -37,9 +38,9 @@ namespace Web_Public.Controllers
                 return View(model);
             }
             UserModels UserFromDb = await _handler.GetByUserName(model.UserName);
-
+            string pass = StringHelper.stringToSHA512(UserFromDb.Password);
             //TODO: xu ly tam thoi
-            if (UserFromDb != null && model.Password == UserFromDb.Password)
+            if (UserFromDb != null && model.Password.Equals(pass))
             {
                 Session[SessionEnum.UserID] = UserFromDb.Id;
                 Session[SessionEnum.UserName] = UserFromDb.UserName;
