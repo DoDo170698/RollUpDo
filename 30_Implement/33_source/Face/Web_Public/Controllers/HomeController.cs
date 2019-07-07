@@ -45,7 +45,8 @@ namespace Web_Public.Controllers
                 Session[SessionEnum.UserName] = UserFromDb.UserName;
                 _cacheFactory.RemoveCache("ModuleRoles");
                 _cacheFactory.SaveCache("ModuleRoles","get db ra cái role của nó");
-                Log.Debug(string.Format("------ Login is Ok by {0}------", UserFromDb.UserName));
+                Log.Debug(string.Format("------ Login is Ok by {0} ------", UserFromDb.UserName));
+                Log.Debug("------END Login------");
                 return RedirectToAction("Index", "DichVu",new { xxx= "Đăng nhập thành công" });
             }
 

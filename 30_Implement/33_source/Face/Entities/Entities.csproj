@@ -80,6 +80,7 @@
     <Compile Include="Models\SystemManage\SystemInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AppConfig.cs" />
+    <Compile Include="ViewModels\PageHelper.cs" />
     <Compile Include="ViewModels\UserViewModels.cs" />
     <Compile Include="ViewModels\AuditLogViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModels.cs" />
