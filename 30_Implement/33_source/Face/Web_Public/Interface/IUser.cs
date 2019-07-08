@@ -14,5 +14,10 @@ namespace Web_Public.Interface
         Task<int> Create(UserModels model);
         Task<UserModels> GetByUserName(string userName);
         Task<UserModels> GetAllAsync(PageHelper mpdel, bool showDelete = false);
+
+
+        Task Delete(UserModels model, bool IsSave = false);
+        Task Edit(UserModels model,object key, bool IsSave = false);
     }
+
 }

@@ -66,6 +66,7 @@
     <Compile Include="Models\DanhMuc\Template.cs" />
     <Compile Include="Models\DanhMuc\Mail.cs" />
     <Compile Include="Models\DanhMuc\DonVi.cs" />
+    <Compile Include="Models\FaceDbContext.cs" />
     <Compile Include="Models\SystemManage\ChuVu.cs" />
     <Compile Include="Models\SystemManage\UserRole.cs" />
     <Compile Include="Models\SystemManage\User.cs" />

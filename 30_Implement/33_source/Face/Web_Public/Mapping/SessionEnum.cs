@@ -12,5 +12,6 @@ namespace Web_Public.Mapping
         public static string FullName = "FullName";
         public static string Avatar = "Avatar";
         public static string PersonID = "PersonID";
+        public static string RoleID = "RoleID";
     }
 }

@@ -10,6 +10,9 @@ namespace Entities.ViewModels
     {
         public long Id { get; set; }
         public string RoleName { get; set; }
+        public string Description { get; set; }
+
+
         public long UserId { get; set; }
         public string UserName { get; set; }
     }

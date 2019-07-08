@@ -1,4 +1,5 @@
 ﻿using Common;
+using Entities.Models;
 using Entities.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Web_Public.Controllers
     {
         //  UserHandler _handler = new UserHandler(_repository);
         IUser _handler;
+        //private FaceDbContext context = new FaceDbContext();
         public UserController()
         {
             Log = log4net.LogManager.GetLogger(typeof(UserController));
@@ -74,6 +76,35 @@ namespace Web_Public.Controllers
 
             //return View(model);
         }
+
+        //Edit-User
+        //public ActionResult Edit(long Id)
+        //{
+        //    var result = context.users.Find(Id);
+        //    return View(result);
+        //}
         
+        //[HttpPost]
+        //public ActionResult Edit(UserModels model)
+        //{
+        //    try
+        //    {
+        //        context.Entry(model).State = System.Data.Entity.EntityState.Modified;
+        //        context.SaveChanges();
+        //        return RedirectToAction("Index");
+                
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ModelState.AddModelError("", ex.Message);
+        //        return View(model);
+        //    }
+        //}
+
+        ////Detail-user
+        //public ActionResult Detail(long id)
+        //{
+
+        //}
     }
 }

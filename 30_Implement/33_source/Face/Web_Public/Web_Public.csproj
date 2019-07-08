@@ -200,6 +200,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DichVuController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShareController.cs" />
@@ -207,8 +208,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handler\BaseHandler.cs" />
+    <Compile Include="Handler\PersonHandler.cs" />
     <Compile Include="Handler\RoleHandler.cs" />
     <Compile Include="Handler\UserHandler.cs" />
+    <Compile Include="Interface\IPerson.cs" />
     <Compile Include="Interface\IRole.cs" />
     <Compile Include="Interface\IUser.cs" />
     <Compile Include="Mapping\MapHelper.cs" />
@@ -5965,6 +5968,7 @@
     <Folder Include="Themes\assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\DichVu\" />
+    <Folder Include="Views\Role\" />
     <Folder Include="Views\Share\" />
   </ItemGroup>
   <ItemGroup>
