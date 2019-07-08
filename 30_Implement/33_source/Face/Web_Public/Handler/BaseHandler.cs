@@ -30,6 +30,7 @@ namespace Web_Public.Handler
             }
             set { System.Web.HttpContext.Current.Session[SessionEnum.UserID] = value; }
         }
+
         protected static log4net.ILog Log { get; set; }
         public BaseHandler(IRepository repository)
         {

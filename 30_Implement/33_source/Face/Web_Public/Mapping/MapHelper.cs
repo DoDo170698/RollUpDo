@@ -16,6 +16,10 @@ namespace Web_Public.Mapping
             // 2 way mapping resource <==> ViewModel
             CreateMap<User, UserModels>();
             CreateMap<UserModels, User>();
+
+            //Mapping Role
+            CreateMap<Role, RoleViewModels>();
+            CreateMap<RoleViewModels, Role>();
         }
     }
 }

@@ -207,7 +207,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handler\BaseHandler.cs" />
+    <Compile Include="Handler\RoleHandler.cs" />
     <Compile Include="Handler\UserHandler.cs" />
+    <Compile Include="Interface\IRole.cs" />
     <Compile Include="Interface\IUser.cs" />
     <Compile Include="Mapping\MapHelper.cs" />
     <Compile Include="Mapping\SessionEnum.cs" />
