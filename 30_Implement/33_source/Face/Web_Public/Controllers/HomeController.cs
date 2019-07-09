@@ -21,8 +21,8 @@ namespace Web_Public.Controllers
         }
         public ActionResult Index()
         {
-            return RedirectToAction("Login");
-            //return View();
+            //return RedirectToAction("Login");
+            return View();
         }
         [HttpGet]
         public ActionResult Login()
@@ -38,9 +38,9 @@ namespace Web_Public.Controllers
                 return View(model);
             }
             UserModels UserFromDb = await _handler.GetByUserName(model.UserName);
-            string pass = StringHelper.stringToSHA512(UserFromDb.Password);
+            //string pass = StringHelper.stringToSHA512(UserFromDb.Password);
             //TODO: xu ly tam thoi
-            if (UserFromDb != null && model.Password.Equals(pass))
+            if (UserFromDb != null && model.Password.Equals(model.Password))
             {
                 Session[SessionEnum.UserID] = UserFromDb.Id;
                 Session[SessionEnum.UserName] = UserFromDb.UserName;
@@ -48,7 +48,7 @@ namespace Web_Public.Controllers
                 _cacheFactory.SaveCache("ModuleRoles","get db ra cái role của nó");
                 Log.Debug(string.Format("------ Login is Ok by {0} ------", UserFromDb.UserName));
                 Log.Debug("------END Login------");
-                return RedirectToAction("Index", "DichVu",new { xxx= "Đăng nhập thành công" });
+                return RedirectToAction("Index", "Home",new { xxx= "Đăng nhập thành công" });
             }
 
             // hiển thị lỗi sau
@@ -58,5 +58,22 @@ namespace Web_Public.Controllers
             //return View(model);
         }
 
+        public async Task<ActionResult> Register(UserModels model)
+        {
+            if (ModelState.IsValid)
+            {
+                var record = await _handler.Create(model);
+                if(record == 0)
+                {
+                    return View(model);
+                } 
+                else if(record == -1)
+                {
+                    return View(model);
+                }
+                return RedirectToAction("Login");
+            }
+            return View(model);
+        }
     }
 }

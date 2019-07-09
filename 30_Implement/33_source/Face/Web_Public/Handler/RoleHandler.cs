@@ -28,36 +28,35 @@ namespace Web_Public.Handler
             return 1;
         }
 
-        public async Task<RoleViewModels> Find(long Id)
+        public async Task<IEnumerable<RoleViewModels>> GetAllAsync(PageHelper mpdel)
+        {
+            var records = await _repository.GetRepository<Role>().GetAllAsync();
+            if (records.Count() > 0)
+            {
+                return mapper.Map<IEnumerable<Role>, IEnumerable<RoleViewModels>>(records);
+            }
+            return null;
+
+        }
+
+        public Task<int> UpdateAsync(RoleViewModels model)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<RoleViewModels> GetAllAsync(PageHelper mpdel)
+        Task<int> IRole.CreateAsync(RoleViewModels model)
         {
-            RoleViewModels model = null;
-            var records = await _repository.GetRepository<Role>().GetAllAsync();
-            if (records.Count() > 0)
-            {
-                Role record = records.First();
-                model = mapper.Map<Role, RoleViewModels>(record);
-            }
-            return model;
-
+            throw new NotImplementedException();
         }
 
-        public async Task<int> EditAsync(RoleViewModels model)
+        Task<RoleViewModels> IRole.GetAllAsync(PageHelper mpdel)
         {
-            if (model == null)
-            {
-                throw new ArgumentNullException(ParamNull);
-            }
-            var record = await _repository.GetRepository<Role>().ReadAsync(model.Id);
-            if(record == null)
-            {
-                return 1;
-            }
-            return 0;
-        } 
+            throw new NotImplementedException();
+        }
+
+        Task<int> IRole.UpdateAsync(RoleViewModels model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

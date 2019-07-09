@@ -11,13 +11,14 @@ namespace Web_Public.Interface
     interface IUser 
     {
         Task<ExecuteResult> CheckLogIn(string UserName, string Password);
-        Task<int> Create(UserModels model);
+
         Task<UserModels> GetByUserName(string userName);
         Task<UserModels> GetAllAsync(PageHelper mpdel, bool showDelete = false);
 
-
-        Task Delete(UserModels model, bool IsSave = false);
-        Task Edit(UserModels model,object key, bool IsSave = false);
+        #region CRUD
+        Task<int> Create(UserModels model);
+        Task<int> Update(UserModels model);
+        #endregion
     }
 
 }

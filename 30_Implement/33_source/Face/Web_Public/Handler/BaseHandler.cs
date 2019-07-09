@@ -31,17 +31,6 @@ namespace Web_Public.Handler
             set { System.Web.HttpContext.Current.Session[SessionEnum.UserID] = value; }
         }
 
-        //public long RoleId
-        //{
-        //    get
-        //    {
-        //        object obj = 
-        //        long _RoleId = -1;
-        //        if()
-        //    }
-        //    set
-        //}
-
         protected static log4net.ILog Log { get; set; }
         public BaseHandler(IRepository repository)
         {

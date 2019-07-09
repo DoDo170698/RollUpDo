@@ -15,9 +15,7 @@ namespace Web_Public.Controllers
 {
     public class UserController : BaseController
     {
-        //  UserHandler _handler = new UserHandler(_repository);
         IUser _handler;
-        //private FaceDbContext context = new FaceDbContext();
         public UserController()
         {
             Log = log4net.LogManager.GetLogger(typeof(UserController));

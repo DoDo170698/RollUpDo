@@ -5970,6 +5970,7 @@
     <Folder Include="Views\DichVu\" />
     <Folder Include="Views\Role\" />
     <Folder Include="Views\Share\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -5983,6 +5984,7 @@
     <Content Include="log4net.config" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\EmptyLayout.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
