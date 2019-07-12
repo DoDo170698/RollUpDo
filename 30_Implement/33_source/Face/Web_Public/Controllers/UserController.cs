@@ -15,17 +15,15 @@ namespace Web_Public.Controllers
 {
     public class UserController : BaseController
     {
-        IUser _handler;
+        UserHandler _handler = new UserHandler(_repository);
         public UserController()
         {
             Log = log4net.LogManager.GetLogger(typeof(UserController));
         }
-        public ActionResult Index()
+        public async Task<ActionResult> Index(PageHelper model)
         {
-            // load ra trang index không có data bên trong 
-            // dùng ajax load dữ liệu từ action Table(PageHelper model) điền vào 
-            // 
-            return View();
+            var result = await _handler.GetAllAsync(model);
+            return View(result);
         }
         public async Task<ActionResult> Table(PageHelper model)
         {
@@ -51,7 +49,7 @@ namespace Web_Public.Controllers
             if (ModelState.IsValid)
             {
                 var result = await _handler.Create(model);
-               
+
                 if (result == 0)
                 {
                     Log.Debug("------ User đang được tạo mới từ một nơi khác ------");
@@ -74,35 +72,5 @@ namespace Web_Public.Controllers
 
             //return View(model);
         }
-
-        //Edit-User
-        //public ActionResult Edit(long Id)
-        //{
-        //    var result = context.users.Find(Id);
-        //    return View(result);
-        //}
-        
-        //[HttpPost]
-        //public ActionResult Edit(UserModels model)
-        //{
-        //    try
-        //    {
-        //        context.Entry(model).State = System.Data.Entity.EntityState.Modified;
-        //        context.SaveChanges();
-        //        return RedirectToAction("Index");
-                
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ModelState.AddModelError("", ex.Message);
-        //        return View(model);
-        //    }
-        //}
-
-        ////Detail-user
-        //public ActionResult Detail(long id)
-        //{
-
-        //}
     }
 }

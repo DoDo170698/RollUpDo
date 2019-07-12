@@ -15,13 +15,14 @@ namespace Web_Public.Controllers
     public class HomeController : BaseController
     {
         UserHandler _handler = new UserHandler(_repository);
+        RoleHandler _roleHandler = new RoleHandler(_repository);
         public HomeController()
         {
             Log = log4net.LogManager.GetLogger(typeof(HomeController));
         }
         public ActionResult Index()
         {
-            //return RedirectToAction("Login");
+            //return RedirectToAction("Index");
             return View();
         }
         [HttpGet]
@@ -47,8 +48,7 @@ namespace Web_Public.Controllers
                 _cacheFactory.RemoveCache("ModuleRoles");
                 _cacheFactory.SaveCache("ModuleRoles","get db ra cái role của nó");
                 Log.Debug(string.Format("------ Login is Ok by {0} ------", UserFromDb.UserName));
-                Log.Debug("------END Login------");
-                return RedirectToAction("Index", "Home",new { xxx= "Đăng nhập thành công" });
+                return RedirectToAction("Index");
             }
 
             // hiển thị lỗi sau
@@ -74,6 +74,16 @@ namespace Web_Public.Controllers
                 return RedirectToAction("Login");
             }
             return View(model);
+        }
+        public async Task<ActionResult> List(PageHelper model)
+        {
+            var result = await _handler.GetAllAsync(model);
+            return View(result);
+        }
+        public async Task<ActionResult> ListRole(PageHelper model)
+        {
+            var result = await _roleHandler.GetAllAsync(model);
+            return View(result);
         }
     }
 }

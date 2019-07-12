@@ -37,8 +37,8 @@ namespace Web_Public
                 "~/Themes/assets/global/plugins/bootstrap/js/bootstrap.min.js",
                 "~/Themes/assets/global/plugins/js.cookie.min.js",
                 "~/Themes/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js",
-                "~/Themes/assets/global/plugins/jquery.blockui.min.js",
-                "~/Themes/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" ));
+                "~/Themes/assets/global/plugins/jquery.blockui.min.js"
+                ));
             bundles.Add(new ScriptBundle("~/Content/js2").Include(
 
                 // valudate
@@ -47,7 +47,8 @@ namespace Web_Public
               "~/Themes/assets/global/plugins/select2/js/select2.full.min.js",
               "~/Themes/assets/global/plugins/backstretch/jquery.backstretch.min.js",
               // global
-              "~/Themes/assets/global/scripts/app.min.js"));
+              "~/Themes/assets/global/scripts/app.min.js"
+              ));
 
             // Login
             bundles.Add(new StyleBundle("~/css/login").Include(

@@ -14,21 +14,33 @@ namespace Web_Public.Handler
     {
         private const string ParamNull = "Không được để trống";
 
-        public RoleHandler(IRepository repository): base(repository){}
+        public RoleHandler(IRepository repository) : base(repository) { }
 
         public async Task<int> CreateAsync(RoleViewModels model)
         {
-            bool any = await _repository.GetRepository<Role>().AnyAsync(r => r.Name == model.RoleName);
+            bool any = await _repository.GetRepository<Role>().AnyAsync(r=>r.Name == model.Name);
             if (!any)
             {
                 var resord = mapper.Map<RoleViewModels, Role>(model);
                 var result = await _repository.GetRepository<Role>().CreateAsync(resord, AccountId);
                 return result;
             }
-            return 1;
+            return -1;
         }
 
-        public async Task<IEnumerable<RoleViewModels>> GetAllAsync(PageHelper mpdel)
+        public async Task<int> Updata(RoleViewModels model)
+        {
+            var record = await _repository.GetRepository<Role>().ReadAsync(r => r.Name == model.Name);
+            if(record != null)
+            {
+                record = mapper.Map<RoleViewModels, Role>(model);
+                var result = await _repository.GetRepository<Role>().UpdateAsync(record, AccountId);
+                return result;
+            }
+            return -1;
+        }
+
+        public async Task<IEnumerable<RoleViewModels>> GetAllAsync(PageHelper page)
         {
             var records = await _repository.GetRepository<Role>().GetAllAsync();
             if (records.Count() > 0)
@@ -39,12 +51,12 @@ namespace Web_Public.Handler
 
         }
 
-        public Task<int> UpdateAsync(RoleViewModels model)
+        Task<int> IRole.CreateAsync(RoleViewModels model)
         {
             throw new NotImplementedException();
         }
 
-        Task<int> IRole.CreateAsync(RoleViewModels model)
+        Task<int> IRole.UpdateAsync(RoleViewModels model)
         {
             throw new NotImplementedException();
         }
@@ -54,7 +66,7 @@ namespace Web_Public.Handler
             throw new NotImplementedException();
         }
 
-        Task<int> IRole.UpdateAsync(RoleViewModels model)
+        public Task GetAllAsync()
         {
             throw new NotImplementedException();
         }

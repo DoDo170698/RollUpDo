@@ -59,7 +59,7 @@ namespace Web_Public.Handler
                 var result = await _repository.GetRepository<User>().UpdateAsync(record, AccountId);
                 return result;
             }
-            return -1;
+            return 1;
         }
 
         public async Task<IEnumerable<UserModels>> GetAllAsync(PageHelper mpdel, bool showDelete = false)

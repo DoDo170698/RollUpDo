@@ -8,19 +8,43 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Web_Public.Handler;
 using Web_Public.Interface;
 
 namespace Web_Public.Controllers
 {
     public class RoleController : BaseController
     {
-        IRole _handler;
+        RoleHandler _roleHandler = new RoleHandler(_repository);
         // GET: Role
-        public ActionResult Index(PageHelper model)
+        public async Task<ActionResult> Index(PageHelper model)
         {
-            var record = _handler.GetAllAsync(model);
-            return View(record);
+            var result = await _roleHandler.GetAllAsync(model);
+            return View(result);
         }
+
+        public async Task<ActionResult> Create(RoleViewModels model)
+        {
+            if (ModelState.IsValid)
+            {
+                var record = await _roleHandler.CreateAsync(model);
+                if (record == 0)
+                {
+                    return View(model);
+                }
+                else if (record == -1)
+                {
+                    return View(model);
+                }
+                return RedirectToAction("Index", "Role");
+            }
+            return View(model);
+        }
+
+        //public async Task<ActionResult> Update()
+        //{
+        //    return View();
+        //}
     }
 }
 
