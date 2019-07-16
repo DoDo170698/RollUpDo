@@ -15,7 +15,7 @@ namespace Web_Public.Interface
         Task<int> UpdateAsync(RoleViewModels model);
         Task GetAllAsync();
         //#region CRUD
-
+        Task<int> DeleteAsync(RoleViewModels model);
         //#endregion
 
     }

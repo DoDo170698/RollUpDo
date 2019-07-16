@@ -14,6 +14,8 @@ namespace Web_Public.Handler
     {
         private const string ParamNull = "Không được để trống";
 
+        public object Id { get; private set; }
+
         public RoleHandler(IRepository repository) : base(repository) { }
 
         public async Task<int> CreateAsync(RoleViewModels model)
@@ -34,10 +36,22 @@ namespace Web_Public.Handler
             if(record != null)
             {
                 record = mapper.Map<RoleViewModels, Role>(model);
-                var result = await _repository.GetRepository<Role>().UpdateAsync(record, AccountId);
+                //var result = await _repository.GetRepository<Role>().UpdateAsync(record, AccountId);
+                var result = await _repository.GetRepository<Role>().UpdateAsync(record,AccountId);
                 return result;
             }
             return -1;
+        }
+
+        public async Task<int> DeleteAsync(RoleViewModels model)
+        {
+            var record = await _repository.GetRepository<Role>().ReadAsync(model.Id);
+            if(record == null)
+            {
+                return 1;
+            }
+            var result = await _repository.GetRepository<Role>().DeleteAsync(record, AccountId);
+            return result;
         }
 
         public async Task<IEnumerable<RoleViewModels>> GetAllAsync(PageHelper page)
@@ -67,6 +81,10 @@ namespace Web_Public.Handler
         }
 
         public Task GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+        public static object Find(object id)
         {
             throw new NotImplementedException();
         }

@@ -71,7 +71,12 @@ namespace Web_Public.Controllers
                 {
                     return View(model);
                 }
-                return RedirectToAction("Login");
+                else if (record == 1)
+                {
+                    return RedirectToAction("Login");
+                }
+                return RedirectToAction("Register");
+
             }
             return View(model);
         }
