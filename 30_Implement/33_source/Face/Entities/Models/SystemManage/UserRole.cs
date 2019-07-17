@@ -17,7 +17,7 @@ namespace Entities.Models.SystemManage
         public long UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual User Users { get; set; }
-        public long RoleId { get; set; }
+        public int RoleId { get; set; }
         [ForeignKey("RoleId")]
         public virtual Role Roles { get; set; }
 

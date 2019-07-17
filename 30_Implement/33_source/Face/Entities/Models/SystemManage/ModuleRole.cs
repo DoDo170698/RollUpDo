@@ -12,7 +12,7 @@ namespace Entities.Models.SystemManage
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
-        public long RoleId { get; set; }
+        public int RoleId { get; set; }
         /// <summary>
         /// Mã của chức năng, lấy theo enum
         /// </summary>

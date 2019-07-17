@@ -19,7 +19,6 @@ namespace Web_Public.Handler
         {
             get
             {
-              
                 object objAccountId = System.Web.HttpContext.Current.Session[SessionEnum.UserID];
                 long _AccountId = -1;
                 if (objAccountId == null)

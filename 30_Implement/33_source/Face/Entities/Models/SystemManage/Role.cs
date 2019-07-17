@@ -13,7 +13,7 @@ namespace Entities.Models.SystemManage
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập tên nhóm quyền!")]
         [Display(Name = "Tên nhóm quyền")]
@@ -25,13 +25,8 @@ namespace Entities.Models.SystemManage
         public string Description { get; set; }
         public bool IsDefault { get; set; }
 
-        [Display(Name = "Cấp Cty")]
-        public bool IsLevel1 { get; set; }
-        [Display(Name = "Cấp Admin đơn vị")]
-        public bool IsLevel2 { get; set; }
-
-        [Display(Name = "Cấp người dùng ")]
-        public bool IsLevel3 { get; set; }
+        [Display(Name = "Code")]
+        public string Code { get; set; }
         public virtual ICollection<UserRole> UserRoles { get; set; }
         public virtual ICollection<ModuleRole> RoleModules { get; set; }
 

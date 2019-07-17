@@ -9,13 +9,12 @@ namespace Web_Public.Interface
 {
     interface IRole
     {
-        Task<RoleViewModels> GetAllAsync(PageHelper mpdel);
-
         Task<int> CreateAsync(RoleViewModels model);
         Task<int> UpdateAsync(RoleViewModels model);
-        Task GetAllAsync();
+        Task<IEnumerable<RoleViewModels>> GetAllAsync();
+        Task<IEnumerable<RoleViewModels>> GetAllAsync(PageHelper page);
         //#region CRUD
-        Task<int> DeleteAsync(RoleViewModels model);
+        Task<int> DeleteAsync(int id);
         //#endregion
 
     }

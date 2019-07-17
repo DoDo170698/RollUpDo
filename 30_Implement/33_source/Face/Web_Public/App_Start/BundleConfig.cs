@@ -39,6 +39,9 @@ namespace Web_Public
                 "~/Themes/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js",
                 "~/Themes/assets/global/plugins/jquery.blockui.min.js"
                 ));
+            bundles.Add(new ScriptBundle("~/Index/js").Include(
+               "~/Themes/Customs/js/commonsIndex.js"
+               ));
             bundles.Add(new ScriptBundle("~/Content/js2").Include(
 
                 // valudate

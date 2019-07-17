@@ -1,9 +1,14 @@
 ﻿@model IEnumerable<Entities.ViewModels.RoleViewModels>
 
 @{
-    ViewBag.Title = "Index";
+    string Title = ViewBag.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
     int stt = 0;
+    string CText = ViewBag.CText;
+    string CName = ViewBag.CName;
+    string CRoute = "/" + CName;
+    string DeleteRoute = CRoute + "/Delete";
+    string tableRoute = CRoute + "/Table";
 }
 
 <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -14,8 +19,8 @@
                 <div class="col-md-6">
                     <div class="btn-group">
                         <button id="" class="btn green">
-                            <a href="/Role/Create">
-                                Add New
+                            <a href="@CRoute/Create">
+                                Thêm mới @CText
                                 <i class="fa fa-plus"></i>
                             </a>
                         </button>
@@ -23,38 +28,16 @@
                 </div>
             </div>
         </div>
-        <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
-            <thead>
-                <tr>
-                    <th> STT</th>
-                    <th> Tên quyền </th>
-                    <th> Mô tả </th>
-                    <th> Edit </th>
-                    <th> Delete </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    stt++;
-                    <tr>
-                        <td>@stt</td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "edit" })
-                        </td>
-                        <td>
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "delete" })
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <div id="ajaxContent">
+
+        </div>
+      
     </div>
 </div>
-<!-- END EXAMPLE TABLE PORTLET-->
+<script>
+     var deleteRoute = '@DeleteRoute';
+    var tableRoute = '@tableRoute';
+    $(document).ready(function () {
+        reloadPage();
+    });
+</script>
