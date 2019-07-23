@@ -8,7 +8,7 @@ namespace Entities.Models.SystemManage
     /// <summary>
     /// Tài khoản người dùng
     /// </summary>
-    [DropDown(ValueField = "Id", TextField = "Name")]
+    [DropDown(ValueField = "Id", TextField = "Person")]
     public class Person : Entity
     {
         [Key]
@@ -30,10 +30,6 @@ namespace Entities.Models.SystemManage
         [Column(TypeName = "nvarchar")]
         [StringLength(50, ErrorMessage = "Địa chỉ E-mail không được vượt quá 50 ký tự!")]
         public string Email { get; set; }
-
-        
-        //Ngày tạo
-        public DateTime CreateDate { get; set; }
 
         [StringLength(200, ErrorMessage = "Đường dẫn ảnh đại diện không được vượt quá 200 ký tự!")]
         [Display(Name = "Ảnh đại diện")]
@@ -58,27 +54,25 @@ namespace Entities.Models.SystemManage
         [StringLength(250, ErrorMessage = "Địa chỉ không được vượt quá 250 ký tự!")]
         public string Address { get; set; }
 
-     
-
         public string CodeDonVi { get; set; }
-        [ForeignKey("CodeDonVi")]
-        public virtual DonVi DonVi { get; set; }
+        //[ForeignKey("CodeDonVi")]
+        //public virtual DonVi DonVi { get; set; }
 
-        public string CardId { get; set; }
-        public string PasspostId { get; set; }
-        public string Orther { get; set; }
+        //public string CardId { get; set; }
+        //public string PasspostId { get; set; }
+        //public string Orther { get; set; }
 
-        public bool? IsDeleted { get; set; }
+        //public bool? IsDeleted { get; set; }
 
         public string Describe()
         {
             return "{ AccountId : \"" + Id + "\", Name : \"" + FullName + "\", { Email : \"" + Email + "\" }";
         }
 
-        public Person()
-        {
-            CreateDate = DateTime.Now;
-            IsDeleted = false;
-        }
+        //public Person()
+        //{
+        //    CreateDate = DateTime.Now;
+        //    IsDeleted = false;
+        //}
     }
 }

@@ -14,10 +14,13 @@ namespace Web_Public.Interface
 
         Task<UserModels> GetByUserName(string userName);
         Task<UserModels> GetAllAsync(PageHelper mpdel, bool showDelete = false);
+        Task<IEnumerable<UserModels>> GetAllAsync();
 
         #region CRUD
         Task<int> Create(UserModels model);
-        Task<int> Update(UserModels model);
+        Task<int> UpdateAsync(UserModels model);
+        Task<int> DeleteAsync(long id);
+        Task<int> CreateAsync(UserModels model);
         #endregion
     }
 

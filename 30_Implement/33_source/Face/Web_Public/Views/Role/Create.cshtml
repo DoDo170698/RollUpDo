@@ -6,12 +6,13 @@
     var CText = ViewBag.CText;
     string CRoute = "/" + CName ;
     string CReateRoute = CRoute+"/Create" ;
+    ViewBag.Home = CRoute + "/Index";
     string error = ViewBag.Error ?? "";
 }
 <ul class="page-breadcrumb breadcrumb">
     <li>
         <i class="fa fa-home"></i>
-        <a route="/">@CText</a>
+        <a route="/" href="@ViewBag.Home">Nhóm quyền</a>
         <i class="fa fa-angle-right"></i>
     </li>
     <li>
@@ -57,21 +58,21 @@
                                     </div>
                                 }
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Code, new { @class = "col-md-3 control-label" })
+                                    <span class="col-md-3 control-label">Mã quyền</span>
                                     <div class="col-md-9">
                                         @Html.TextBoxFor(model => model.Code, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.Code)
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Name, new { @class = "col-md-3 control-label" })
+                                    <span class="col-md-3 control-label">Tên quyền</span>
                                     <div class="col-md-9">
                                         @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.Name)
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Description, new { @class = "col-md-3 control-label" })
+                                    <span class="col-md-3 control-label">Mô tả</span>
                                     <div class="col-md-9">
                                         @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.Description)
@@ -83,7 +84,7 @@
                                 <div class="row">
                                     <div class="col-md-offset-3 col-md-9">
                                         <button type="submit" class="btn green-dark"><i class="fa fa-check"></i>  Save</button>
-                                        <a route="@CRoute" class="btn default" id="cancelBtn"><i class="fa fa-refresh"></i> Back</a>
+                                        <a route="@CRoute" href="@ViewBag.Home" class="btn default" id="cancelBtn"><i class="fa fa-refresh"></i> Back</a>
                                     </div>
                                 </div>
                             </div>

@@ -70,7 +70,7 @@ namespace Web_Public.Controllers
         {
             ViewBag.CName = CName;
             ViewBag.CText = CText;
-            ViewBag.Title = "Cập nhật"+CText;
+            ViewBag.Title = "Cập nhật" + CText;
             var updateItem = await _roleHandler.ReadAsync(id);
             if (updateItem != null)
             {

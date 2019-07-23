@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Entities.ViewModels.PeopleViewModels>
+
+@{
+    string Title = ViewBag.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int stt = 0;
+    string CText = ViewBag.CText;
+    string CName = ViewBag.CName;
+    string CRoute = "/" + CName;
+    string DeleteRoute = CRoute + "/Delete";
+    string tableRoute = CRoute + "/Table";
+}
+
+<!-- BEGIN EXAMPLE TABLE PORTLET-->
+<div class="portlet light portlet-fit bordered">
+    <div class="portlet-body">
+        <div class="table-toolbar">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="btn-group">
+                        <button id="" class="btn green">
+                            <a href="@CRoute/Create">
+                                Thêm mới @CText
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ajaxContent">
+
+        </div>
+
+    </div>
+</div>
+<script>
+    var deleteRoute = '@DeleteRoute';
+    var tableRoute = '@tableRoute';
+    $(document).ready(function () {
+        reloadPage();
+    });
+</script>

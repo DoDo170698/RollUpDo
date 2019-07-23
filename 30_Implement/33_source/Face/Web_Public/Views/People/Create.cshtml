@@ -1,0 +1,160 @@
+﻿@model Entities.ViewModels.PeopleViewModels
+
+@{
+    string Title = ViewBag.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var CName = ViewBag.CName;
+    var CText = ViewBag.CText;
+    string CRoute = "/" + CName;
+    string CReateRoute = CRoute + "/Create";
+    ViewBag.Home = CRoute + "/Index";
+    string error = ViewBag.Error ?? "";
+}
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <i class="fa fa-home"></i>
+        <a route="/" href="@ViewBag.Home">Thành viên</a>
+        <i class="fa fa-angle-right"></i>
+    </li>
+    <li>
+        <a route="@CRoute">@Title</a>
+        <i class="fa fa-angle-right"></i>
+    </li>
+
+</ul>
+<!-- BEGIN PAGE BASE CONTENT -->
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PROFILE CONTENT -->
+        <div class="profile-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet box green">
+                        <div class="portlet-title tabbable-line">
+                            <div class="caption caption-md">
+                                <i class="icon-globe theme-font hide"></i>
+                                <span class="caption-subject uppercase">Tạo mới thành viên</span>
+                            </div>
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#tab_1_1" data-toggle="tab">Thông tin thành viên</a>
+                                </li>
+                                <li>
+                                    <a href="#tab_1_2" data-toggle="tab">Tạo mới tài khoản</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="tab-content">
+                                <!-- PERSONAL INFO TAB -->
+                                <div class="tab-pane active" id="tab_1_1">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <div class="form-horizontal">
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="form-group text-center">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;" id="thisImg">
+                                                        <img src="~/Themes/assets/pages/img/avatars/team1.jpg" />
+                                                    </div>
+                                                    <a class="btn green-dark" href="#" id="btnImg">Chọn ảnh</a>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="row txtInfo">
+                                                        <div class="form-group">
+                                                            <lable class="control-label">Mã nhân viên</lable>
+                                                            @Html.EditorFor(model => model.code, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                                                            @Html.ValidationMessageFor(model => model.code, "", new { @class = "text-danger" })
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <lable class="control-label">Họ và tên</lable>
+                                                            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <lable class="control-label">Email</lable>
+                                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <lable class="control-label">Số điện thoại</lable>
+                                                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="row txtInfo">
+                                                        <div class="form-group">
+                                                            <lable class="control-label">Đơn vị</lable>
+                                                            @Html.EditorFor(model => model.CodeDonVi, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.CodeDonVi, "", new { @class = "text-danger" })
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <lable class="control-label">Ngày sinh</lable>
+                                                            @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <lable class="control-label">Giới tính</lable>
+                                                            @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <lable class="control-label">Địa chỉ</lable>
+                                                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-actions">
+                                                <div class="row">
+                                                    <div class="col-md-offset-3 col-md-5">
+                                                        <button type="submit" class="btn green-dark"><i class="fa fa-check"></i> Save</button>
+                                                        <a route="@CRoute" href="@ViewBag.Home" class="btn default" id="cancelBtn"><i class="fa fa-refresh"></i> Back</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <!-- END PERSONAL INFO TAB -->
+                                <!-- CREATER USER TAB -->
+                                <div class="tab-pane" id="tab_1_2">
+                                    @using (Html.BeginForm())
+                                    {
+
+                                    }
+                                </div>
+                                <!-- END CREATER USER TAB -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PROFILE CONTENT -->
+    </div>
+</div>
+<!-- END PAGE BASE CONTENT -->
+@section jsFooter{
+    <script>
+        $('#btnImg').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder
+            finder.selectActionFunction = function (url) {
+                $('#thisImg').html('<img src="' + url + '">')
+            };
+            finder.popup();
+        })
+    </script>
+}

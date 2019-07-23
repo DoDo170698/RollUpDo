@@ -15,62 +15,104 @@ namespace Web_Public.Controllers
 {
     public class UserController : BaseController
     {
-        UserHandler _handler = new UserHandler(_repository);
-        public UserController()
-        {
-            Log = log4net.LogManager.GetLogger(typeof(UserController));
-        }
+
+        public string CName = "User";
+        public string CText = "nhóm tài khoản";
+        UserHandler _userHandler = new UserHandler(_repository);
+
         public async Task<ActionResult> Index(PageHelper model)
         {
-            var result = await _handler.GetAllAsync(model);
-            return View(result);
-        }
-        public async Task<ActionResult> Table(PageHelper model)
-        {
-            // TODO Not Yet
+            ViewBag.CName = CName;
+            ViewBag.CText = CText;
+            ViewBag.Title = "Danh sách  " + CText;
 
-            // tạm thời load tất ra dùng data table phân trang ở view nha.
-            // view cái này chỉ cõ lỗi cái bảng dữ liệu thôi k có layout để 
-            // cps thể trả về view hoặc Json 
-            var record = await _handler.GetAllAsync(model, false);
-            //return View(record);
-            return Json(record, JsonRequestBehavior.AllowGet);
+            var result = await _userHandler.GetAllAsync(model);
+            if (result.Count() < 1)
+            {
+                return View(new List<UserModels>());
+            }
+            return View(result);
         }
 
         [HttpGet]
-        public ActionResult Login()
+        public async Task<ActionResult> Table()
         {
+            var result = await _userHandler.GetAllAsync();
+            if (result.Count() < 1)
+            {
+                return View(new List<UserModels>());
+            }
+            return View(result);
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            ViewBag.CName = CName;
+            ViewBag.CText = CText;
+            ViewBag.Title = "Tạo mới";
             return View();
         }
+
         [HttpPost]
         public async Task<ActionResult> Create(UserModels model)
         {
-            Log.Debug("------Processing User createing------");
             if (ModelState.IsValid)
             {
-                var result = await _handler.Create(model);
-
-                if (result == 0)
+                var record = await _userHandler.CreateAsync(model);
+                if(record <= 0)
                 {
-                    Log.Debug("------ User đang được tạo mới từ một nơi khác ------");
-                    // tempdata ra view nữa nha
+                    ViewBag.Error = "Không tạo được" + CText;
                     return View(model);
                 }
-                else if (result == -1)
-                {
-                    Log.Error("------ User này đã tồn tại ------");
-                    // tempdata ra view nữa nha
-                    return View(model);
-                }
-                Log.Debug("------ Tạp mới thành công user... ------");
-                // tempdata ra view nữa nha
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "User");
             }
-            Log.Debug("------ Login is thất bại ------");
-            // Temp data ...
-            return RedirectToAction("Index", "DichVu", new { xxx = "Đăng nhập lỗi" });
+            return View(model);
+        }
 
-            //return View(model);
+        [HttpGet]
+        public async Task<ActionResult> Update(long id)
+        {
+            ViewBag.CName = CName;
+            ViewBag.CText = CText;
+            ViewBag.Title = "Cập nhật " + CText;
+            var record = await _userHandler.ReadAsync(id);
+            if(record != null)
+            {
+                return View(record);
+            }
+            ViewBag.Error = "Không tìm thấy bản ghi tương ứng";
+            return RedirectToAction("Index", "User");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Update(UserModels model)
+        {
+            var record = await _userHandler.ReadAsync(model.Id);
+            if(record == null)
+            {
+                ViewBag.Error = "Không tìm thấy bản ghi tương ứng";
+                return RedirectToAction("Index", "User");
+            }
+
+            var result = await _userHandler.UpdateAsync(model);
+            if (result <= 0) 
+            {
+                ViewBag.Error = "Không thế sửa" + CText;
+                return RedirectToAction("Index", "User");
+            }
+            return View(result);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(long id)
+        {
+            var result = await _userHandler.DeleteAsync(id);
+            if(result <= 0)
+            {
+                return Json(new { Message = "Thao tác không thành công", IsSuccess = false });
+            }
+            return Json(new { Message = "Thao tác thành công", IsSuccess = true });
         }
     }
 }

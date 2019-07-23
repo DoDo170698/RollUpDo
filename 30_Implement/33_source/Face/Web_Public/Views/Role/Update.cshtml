@@ -55,27 +55,30 @@
                                         @error
                                     </div>
                                 }
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Code, new { @class = "col-md-3 control-label" })
-                                    <div class="col-md-9">
-                                        @Html.TextBoxFor(model => model.Code, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Code)
+                                    <div class="form-group">
+                                        @*@Html.LabelFor(model => model.Code, new { @class = "col-md-3 control-label" })*@
+                                        <span class="col-md-3 control-label">Mã quyền</span>
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(model => model.Code, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Code)
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Name, new { @class = "col-md-3 control-label" })
-                                    <div class="col-md-9">
-                                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Name)
+                                    <div class="form-group">
+                                        @*@Html.LabelFor(model => model.Name, new { @class = "col-md-3 control-label" })*@
+                                        <span class="col-md-3 control-label">Tên quyền</span>
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Name)
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Description, new { @class = "col-md-3 control-label" })
-                                    <div class="col-md-9">
-                                        @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Description)
+                                    <div class="form-group">
+                                        @*@Html.LabelFor(model => model.Description, new { @class = "col-md-3 control-label" })*@
+                                        <span class="col-md-3 control-label">Mô tả</span>
+                                        <div class="col-md-9">
+                                            @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Description)
+                                        </div>
                                     </div>
-                                </div>
 
                             </div>
                             <div class="form-actions">

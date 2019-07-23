@@ -29,6 +29,10 @@
     <link href="~/Themes/assets/layouts/layout4/css/themes/default.min.css" rel="stylesheet" />
     <link href="~/Themes/assets/layouts/layout4/css/custom.min.css" rel="stylesheet" />
     <link href="~/Themes/assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/Themes/Customs/css/_Layout.css" rel="stylesheet" />
+    <link href="~/Themes/Customs/css/createrPeople.css" rel="stylesheet" />
+
     <script src="~/Themes/assets/global/plugins/jquery.min.js"></script>
     @Scripts.Render("~/Index/js")
     <link rel="shortcut icon" href="favicon.ico" />
@@ -458,16 +462,23 @@
                     </li>
                     <li class="nav-item  ">
                         <a href="/User/Index" class="nav-link nav-toggle">
-                            <i class="icon-diamond"></i>
+                            <i class="icon-user"></i>
                             <span class="title">Tài khoản</span>
-                            <span class="arrow"></span>
+                            @*<span class="arrow"></span>*@
                         </a>
                     </li>
                     <li class="nav-item  ">
                         <a href="/Role/Index" class="nav-link nav-toggle">
                             <i class="icon-diamond"></i>
                             <span class="title">Quyền</span>
-                            <span class="arrow"></span>
+                            @*<span class="arrow"></span>*@
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="/People/Index" class="nav-link nav-toggle">
+                            <i class="icon-users"></i>
+                            <span class="title">Thành viên</span>
+                            @*<span class="arrow"></span>*@
                         </a>
                     </li>
                 </ul>
@@ -518,11 +529,14 @@
     <script src="~/Themes/assets/layouts/layout4/scripts/demo.min.js"></script>
     <script src="~/Themes/assets/layouts/layout4/scripts/layout.min.js"></script>
 
+    <script src="~/Themes/assets/plugins/ckfinder/ckfinder.js"></script>
+
     <script src="~/Themes/assets/layouts/global/scripts/quick-sidebar.js"></script>
     <script src="~/Themes/assets/layouts/global/scripts/quick-nav.min.js"></script>
     <script src="~/Themes/assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
     <script src="~/Themes/assets/pages/scripts/ui-toastr.min.js" type="text/javascript"></script>
     <!-- END THEME LAYOUT SCRIPTS -->
+
     <script>
         $(document).ready(function () {
             $('#clickmewow').click(function () {
@@ -530,7 +544,7 @@
             });
         })
     </script>
-    
+    @RenderSection("jsFooter", required: false)
     @RenderSection("scripts", required: false)
 </body>
 </html>

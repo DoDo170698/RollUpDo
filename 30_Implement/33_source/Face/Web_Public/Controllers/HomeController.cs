@@ -58,6 +58,7 @@ namespace Web_Public.Controllers
             //return View(model);
         }
 
+        //Tạo mới ở bên ngoài 
         public async Task<ActionResult> Register(UserModels model)
         {
             if (ModelState.IsValid)
@@ -79,16 +80,6 @@ namespace Web_Public.Controllers
 
             }
             return View(model);
-        }
-        public async Task<ActionResult> List(PageHelper model)
-        {
-            var result = await _handler.GetAllAsync(model);
-            return View(result);
-        }
-        public async Task<ActionResult> ListRole(PageHelper model)
-        {
-            var result = await _roleHandler.GetAllAsync(model);
-            return View(result);
         }
     }
 }

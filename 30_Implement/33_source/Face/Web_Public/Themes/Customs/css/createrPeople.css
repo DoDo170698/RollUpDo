@@ -1,0 +1,33 @@
+﻿.update, .detail, .delete {
+    width: 15px !important;
+}
+
+
+#thisImg {
+    height: 200px !important;
+    margin: auto;
+    border-radius: 50% !important;
+}
+
+    #thisImg img {
+        height: 190px !important;
+        width: 190px;
+        border-radius: 50% !important;
+    }
+
+#btnImg {
+    margin-top: 3px;
+}
+
+.form-group, .txtInfo {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+    .form-group .form-control {
+        width: 100%;
+    }
+
+.form-actions {
+    margin-left: 21%;
+}
