@@ -137,12 +137,12 @@ namespace Web_Public.Controllers
                 }
             }
             List<DonVi> list = new List<DonVi>();
-            list.Add(new DonVi() { Code = "EPU", Name = "Đại học điện lực", DiaChi = "235 Hoàn gquốc việt", Level = 1 });
-            list.Add(new DonVi() { Code = "CNTT", Name = "Khoa công nghệ thông tin", CodeParent = "EPU", Level = 2 });
-            list.Add(new DonVi() { Code = "DTVT", Name = "Khoa điện tử viễn thông", CodeParent = "EPU", Level = 2 });
-            list.Add(new DonVi() { Code = "D10CNPM", Name = "Lớp D10 công nghệ phần mềm", CodeParent = "CNTT", Level = 3 });
-            list.Add(new DonVi() { Code = "D10QTANM", Name = "Lớp D10 quản trị an ninh mạng", CodeParent = "CNTT", Level = 3 });
-            list.Add(new DonVi() { Code = "D10TMDT", Name = "Lớp D10 thương mại điện tử", CodeParent = "CNTT", Level = 3 });
+            //list.Add(new DonVi() { Code = "EPU", Name = "Đại học điện lực", DiaChi = "235 Hoàn gquốc việt", Level = 1 });
+            //list.Add(new DonVi() { Code = "CNTT", Name = "Khoa công nghệ thông tin", CodeParent = "EPU", Level = 2 });
+            //list.Add(new DonVi() { Code = "DTVT", Name = "Khoa điện tử viễn thông", CodeParent = "EPU", Level = 2 });
+            //list.Add(new DonVi() { Code = "D10CNPM", Name = "Lớp D10 công nghệ phần mềm", CodeParent = "CNTT", Level = 3 });
+            //list.Add(new DonVi() { Code = "D10QTANM", Name = "Lớp D10 quản trị an ninh mạng", CodeParent = "CNTT", Level = 3 });
+            //list.Add(new DonVi() { Code = "D10TMDT", Name = "Lớp D10 thương mại điện tử", CodeParent = "CNTT", Level = 3 });
 
             foreach (var item in list)
             {
@@ -170,7 +170,6 @@ namespace Web_Public.Controllers
                     Sex = new Random().Next(0, 1) == 0 ? false : true,
                     Address = "epuit",
                     code = "15813100" + i.ToString(),
-                    CodeDonVi = ""
 
                 };
                 result += await _repository.GetRepository<Person>().CreateAsync(item, 0);

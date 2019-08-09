@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Entities.ViewModels.UnitViewModels>
+@{
+    Layout = null;
+    int stt = 0;
+}
+<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+    <thead>
+        <tr>
+            <th> STT</th>
+            <th> Tên đơn vị </th>
+            <th> Mã đơn vị </th>
+            <th> Mô tả </th>
+            <th> Email </th>
+            <th> Địa chỉ </th>
+            <th width="100"> Tháo tác </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                stt++;
+                <tr data-objectid="@item.Id" role="row" class="">
+                    <td>@stt</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiaChi)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Update", new { id = item.Id }, new { @class = "update btn btn-info" })
+                        @Html.ActionLink("Xem", "Detail", new { id = item.Id }, new { @class = "detail btn btn-info" })
+                        <a class="delete btn btn-danger" href="javascript:;">Xóa</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -20,7 +20,8 @@ namespace Web_Public.Handler
             bool any = await _repository.GetRepository<Person>().AnyAsync(p => p.code == model.code);
             if (!any)
             {
-                var record = mapper.Map<PeopleViewModels, Person>(model);
+                //var record = mapper.Map<PeopleViewModels, Person>(model);
+                var record = mapper.Map<Person>(model);
                 var result = await _repository.GetRepository<Person>().CreateAsync(record, AccountId);
                 return result;
             }

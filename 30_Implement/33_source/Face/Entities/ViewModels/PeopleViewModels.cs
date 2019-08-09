@@ -24,8 +24,8 @@ namespace Entities.ViewModels
         [Required(ErrorMessage = "Vui lòng nhập địa chỉ email!")]
         public string Email { get; set; }
 
-        [Display(Name ="Đơn vị")]
-        public string CodeDonVi { get; set; }
+        //[StringLength(20)]
+        public long UnitId { get; set; }
 
         [Display(Name = "Ảnh đại diện")]
         public string ProfilePicture { get; set; }

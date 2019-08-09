@@ -1,7 +1,8 @@
-﻿.update, .detail, .delete {
-    width: 15px !important;
+﻿body {
 }
-
+.green a {
+    color: #ffffff;
+}
 
 #thisImg {
     height: 200px !important;

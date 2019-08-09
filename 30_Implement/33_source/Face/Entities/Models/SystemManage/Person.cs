@@ -54,9 +54,9 @@ namespace Entities.Models.SystemManage
         [StringLength(250, ErrorMessage = "Địa chỉ không được vượt quá 250 ký tự!")]
         public string Address { get; set; }
 
-        public string CodeDonVi { get; set; }
-        //[ForeignKey("CodeDonVi")]
-        //public virtual DonVi DonVi { get; set; }
+        public long UnitId { get; set; }
+        [ForeignKey("UnitId")]
+        public virtual DonVi DonVi { get; set; }
 
         //public string CardId { get; set; }
         //public string PasspostId { get; set; }
@@ -68,11 +68,5 @@ namespace Entities.Models.SystemManage
         {
             return "{ AccountId : \"" + Id + "\", Name : \"" + FullName + "\", { Email : \"" + Email + "\" }";
         }
-
-        //public Person()
-        //{
-        //    CreateDate = DateTime.Now;
-        //    IsDeleted = false;
-        //}
     }
 }

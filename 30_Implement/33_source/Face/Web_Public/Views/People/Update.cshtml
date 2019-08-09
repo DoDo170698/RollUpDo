@@ -130,15 +130,3 @@
     </div>
 </div>
 <!-- END PAGE BASE CONTENT -->
-@section jsFooter{
-    <script>
-        $('#btnImg').on('click', function (e) {
-            e.preventDefault();
-            var finder = new CKFinder
-            finder.selectActionFunction = function (url) {
-                $('#thisImg').html('<img src="' + url + '">')
-            };
-            finder.popup();
-        })
-    </script>
-}

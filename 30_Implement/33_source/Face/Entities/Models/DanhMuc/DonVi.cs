@@ -15,11 +15,17 @@ namespace Entities.Models
     public class DonVi : Entity
     {
         [Key]
-        [Display(Name = "Mã")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
+
+        [Display(Name = "Mã đơn vị")]
+        [Column(TypeName ="nvarchar")]
+        [StringLength(20)]
         public string Code { get; set; }
+     
         #region const
-        public DateTime CreateDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
+        //public DateTime CreateDate { get; set; }
+        //public DateTime? UpdateDate { get; set; }
         public bool? IsDeleted { get; set; }
         [Display(Name = "Tên")]
         public string Name { get; set; }
@@ -36,21 +42,25 @@ namespace Entities.Models
         public string Email { get; set; }
 
 
-        [Display(Name = "Cấp đơn vị")]
-        public int Level { get; set; }
+        //[Display(Name = "Cấp đơn vị")]
+        //public int Level { get; set; }
 
-        [Display(Name = "Đơn vị quản lý trực tiếp")]
-        public string CodeParent { get; set; }
-        [ForeignKey("CodeParent")]
-        public virtual DonVi DonVis { get; set; }
+        //[Display(Name = "Đơn vị quản lý trực tiếp")]
+        //public string CodeParent { get; set; }
+        //[ForeignKey("CodeParent")]
+        //public virtual DonVi DonVis { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public long ParentId { get; set; }
+        
         public DonVi()
         {
-            CreateDate = DateTime.Now;
+            //CreateDate = DateTime.Now;
+            IsDeleted = false;
         }
      
         public string Describe()
         {
-            return "{mã: " + Code + "}";
+            return "{UnitId: " + Id + "}";
 
         }
     }

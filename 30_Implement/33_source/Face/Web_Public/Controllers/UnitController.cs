@@ -1,42 +1,39 @@
-﻿using System;
+﻿using Entities.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Entities.ViewModels;
-using Interface;
 using Web_Public.Handler;
 
 namespace Web_Public.Controllers
 {
-    public class PeopleController : BaseController
+    public class UnitController : BaseController
     {
-        public string CName = "People";
-        public string CText = "thành viên";
-        PeopleHandler _peopleHandler = new PeopleHandler(_repository);
-        UnitHandler _uniteHandler = new UnitHandler(_repository);
-        // GET: People
-        public async Task<ActionResult> Index(PageHelper model)
+        public string CName = "Unit";
+        public string CText = "đơn vị";
+        UnitHandler _unitHandler = new UnitHandler(_repository);
+
+        public async Task<ActionResult> Index(PageHelper helper)
         {
             ViewBag.CName = CName;
             ViewBag.CText = CText;
             ViewBag.Title = "Danh sách " + CText;
 
-            var result = await _peopleHandler.GetAllAsync(model);
-            if(result.Count() < 1)
-            {
-                return View(new List<PeopleViewModels>());
-            }
-            return View(result);
-        }
-
-        public async Task<ActionResult> Table()
-        {
-            var result = await _peopleHandler.GetAllAsync();
+            var result = await _unitHandler.GetAllAsync();
             if (result.Count() < 1)
             {
-                return View(new List<PeopleViewModels>());
+                return View(new List<UnitViewModels>());
+            }
+            return View(helper);
+        }
+        public async Task<ActionResult> Table()
+        {
+            var result = await _unitHandler.GetAllAsync();
+            if (result.Count() < 1)
+            {
+                return View(new List<UnitViewModels>());
             }
             return View(result);
         }
@@ -48,68 +45,66 @@ namespace Web_Public.Controllers
             ViewBag.CText = CText;
             ViewBag.Title = "Tạo mới " + CText;
 
-            var unit = await _uniteHandler.GetAllAsync();
-            ViewBag.UnitId = new SelectList(unit, "Id", "Name", "Code");
+            //var unit = await _unitHandler.GetAllAsync();
+            //ViewBag.ParentId = new SelectList(unit, "Name", "Code");
 
             return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(PeopleViewModels model)
+        public async Task<ActionResult> Create(UnitViewModels model)
         {
             if (ModelState.IsValid)
             {
-                var record = await _peopleHandler.CreateAsync(model);
+                var record = await _unitHandler.CreateAsync(model);
                 if(record <= 0)
                 {
-                    ViewBag.Error = "Không tạo mới được" + CText;
+                    ViewBag.Error = "Không thể tạo được bản mới";
                     return View(model);
                 }
-                return RedirectToAction("Index", "People");
+
+                //var unit = await _unitHandler.GetAllAsync();
+                //ViewBag.ParentId = new SelectList(unit, "Name", "Code", model.ParentId);
+
+                return RedirectToAction("Index","Unit");
             }
-            var unit = await _uniteHandler.GetAllAsync();
-            ViewBag.UnitId = new SelectList(unit, "Id", "Name", "Code", model.UnitId);
             return View(model);
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<ActionResult> Update(long id)
         {
             ViewBag.CName = CName;
             ViewBag.CText = CText;
             ViewBag.Title = "Cập nhật " + CText;
 
-            var record = await _peopleHandler.ReadAsync(id);
-            if (record != null)
+            var record = await _unitHandler.GetAllAsync();
+            if(record != null)
             {
                 return View(record);
             }
             ViewBag.Error = "Không tìm thấy thành viên này trong hệ thống";
-            return RedirectToAction("Index", "People");
+            return RedirectToAction("Index", "Unit");
         }
-        [HttpPost]
-        public async Task<ActionResult> Update(PeopleViewModels model)
+        [HttpGet]
+        public async Task<ActionResult> Update(UnitViewModels model)
         {
             if (ModelState.IsValid)
             {
-                var updateing = await _peopleHandler.ReadAsync(model.Id);
-                if (updateing == null)
+                var updating = await _unitHandler.ReadAsync(model.Id);
+                if (updating == null) 
                 {
                     ViewBag.Error = "Không tìm thấy bản ghi tương ứng";
-                    return RedirectToAction("Index", "People");
+                    return RedirectToAction("Index", "Unit");
                 }
-                var result = await _peopleHandler.UpdateAsync(model);
-                if (result <= 0)
+                var record = await _unitHandler.UpdateAsync(model);
+                if (record <= 0)
                 {
                     ViewBag.Error = "Không sửa được" + CText;
                     return View(model);
                 }
-
-                var unit = await _uniteHandler.GetAllAsync();
-                ViewBag.UnitId = new SelectList(unit, "Id", "Name", "Code", model.UnitId);
-
                 ViewBag.Noti = "Cập nhật thành công";
-                return RedirectToAction("Index", "People");
+                return RedirectToAction("Index", "Unit");
             }
             return View(model);
         }
@@ -117,8 +112,8 @@ namespace Web_Public.Controllers
         [HttpGet]
         public async Task<ActionResult> Detail(long id)
         {
-            var record = await _peopleHandler.ReadAsync(id);
-            if(record == null)
+            var record = await _unitHandler.ReadAsync(id);
+            if (record == null)
             {
                 return Json(new { Message = "Không thế xem được!", IsSuccess = false });
             }
@@ -128,13 +123,12 @@ namespace Web_Public.Controllers
         [HttpPost]
         public async Task<ActionResult> Delete(long id)
         {
-            var record = await _peopleHandler.DeleteAsync(id);
+            var record = await _unitHandler.DeleteAsync(id);
             if (record <= 0)
             {
                 return Json(new { Message = "Thao tác không thành công", IsSuccess = false });
             }
             return Json(new { Message = string.Format("Đã xóa thành công"), IsSuccess = true });
         }
-
     }
 }

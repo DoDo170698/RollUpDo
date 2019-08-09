@@ -202,6 +202,7 @@
     <Compile Include="Controllers\DichVuController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShareController.cs" />
@@ -211,9 +212,11 @@
     <Compile Include="Handler\BaseHandler.cs" />
     <Compile Include="Handler\PeopleHandler.cs" />
     <Compile Include="Handler\RoleHandler.cs" />
+    <Compile Include="Handler\UnitHandler.cs" />
     <Compile Include="Handler\UserHandler.cs" />
     <Compile Include="Interface\IPeople.cs" />
     <Compile Include="Interface\IRole.cs" />
+    <Compile Include="Interface\IUnit.cs" />
     <Compile Include="Interface\IUser.cs" />
     <Compile Include="Mapping\MapHelper.cs" />
     <Compile Include="Mapping\SessionEnum.cs" />
@@ -5821,9 +5824,11 @@
     <Content Include="Themes\assets\plugins\ckfinder\_samples\skin_v1.html" />
     <Content Include="Themes\assets\plugins\ckfinder\_samples\standalone.html" />
     <Content Include="Themes\assets\plugins\ckfinder\_samples\standalone_v1.html" />
-    <Content Include="Themes\Customs\js\OpenCkfinder.js" />
+    <Content Include="Themes\Customs\css\styleLayout.css" />
     <Content Include="Themes\Customs\js\commonsIndex.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -6190,7 +6195,6 @@
     <Folder Include="App_Data\App_Error\" />
     <Folder Include="App_Data\App_Log\" />
     <Folder Include="Dto\" />
-    <Folder Include="ManagerImg\" />
     <Folder Include="Themes\assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\DichVu\" />
@@ -6218,13 +6222,17 @@
     <Content Include="Views\People\Index.cshtml" />
     <Content Include="Views\People\Table.cshtml" />
     <Content Include="Views\People\Create.cshtml" />
-    <Content Include="Views\People\Update.cshtml" />
     <Content Include="Themes\assets\plugins\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Themes\assets\plugins\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Themes\assets\plugins\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Themes\assets\plugins\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Themes\assets\plugins\ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Themes\assets\plugins\ckfinder\userfiles\.htaccess" />
+    <Content Include="Views\People\Update.cshtml" />
+    <Content Include="Views\People\Detail.cshtml" />
+    <Content Include="Views\Unit\Table.cshtml" />
+    <Content Include="Views\Unit\Create.cshtml" />
+    <Content Include="Views\Unit\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
