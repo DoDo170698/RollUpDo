@@ -11,25 +11,14 @@ namespace Entities.ViewModels
     public class UnitViewModels
     {
         [Key]
-        public long Id { get; set; }
-
-        [Required]
         [Display(Name = "Mã đơn vị")]
-        [Column(TypeName = "nvarchar")]
         [StringLength(20)]
         public string Code { get; set; }
-
-        #region const
-        //public DateTime CreateDate { get; set; }
-        //public DateTime? UpdateDate { get; set; }
+        
         public bool? IsDeleted { get; set; }
-        [Display(Name = "Tên đơn vị")]
+        [Display(Name = "Tên")]
         public string Name { get; set; }
-        #endregion
-
-        //public string CodeParent { get; set; }
-
-        //public long ParentId { get; set; }
+        
 
         [Display(Name = "Mô tả")]
         public string Description { get; set; }
@@ -37,7 +26,24 @@ namespace Entities.ViewModels
         [Display(Name = "Địa chỉ")]
         public string DiaChi { get; set; }
 
-        [Display(Name = "Email")]
+        [Display(Name = "email")]
         public string Email { get; set; }
+
+
+        [Display(Name = "Cấp đơn vị")]
+        public int Level { get; set; }
+
+        [Display(Name = "Đơn vị cha")]
+        public string CodeParent { get; set; }
+
+        public virtual UnitViewModels DonVis { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime CreateDate { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime UpdateDate { get; set; }
+        public UnitViewModels()
+        {
+            IsDeleted = false;
+        }
     }
 }

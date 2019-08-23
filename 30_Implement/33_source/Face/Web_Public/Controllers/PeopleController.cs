@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -14,7 +15,7 @@ namespace Web_Public.Controllers
     {
         public string CName = "People";
         public string CText = "thành viên";
-        PeopleHandler _peopleHandler = new PeopleHandler(_repository);
+        PersonHandler _peopleHandler = new PersonHandler(_repository);
         UnitHandler _uniteHandler = new UnitHandler(_repository);
         // GET: People
         public async Task<ActionResult> Index(PageHelper model)
@@ -26,7 +27,7 @@ namespace Web_Public.Controllers
             var result = await _peopleHandler.GetAllAsync(model);
             if(result.Count() < 1)
             {
-                return View(new List<PeopleViewModels>());
+                return View(new List<PersonViewModels>());
             }
             return View(result);
         }
@@ -36,7 +37,7 @@ namespace Web_Public.Controllers
             var result = await _peopleHandler.GetAllAsync();
             if (result.Count() < 1)
             {
-                return View(new List<PeopleViewModels>());
+                return View(new List<PersonViewModels>());
             }
             return View(result);
         }
@@ -55,7 +56,7 @@ namespace Web_Public.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(PeopleViewModels model)
+        public async Task<ActionResult> Create(PersonViewModels model)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +69,7 @@ namespace Web_Public.Controllers
                 return RedirectToAction("Index", "People");
             }
             var unit = await _uniteHandler.GetAllAsync();
-            ViewBag.UnitId = new SelectList(unit, "Id", "Name", "Code", model.UnitId);
+           // ViewBag.UnitId = new SelectList(unit, "Id", "Name", "Code", model.UnitCode);
             return View(model);
         }
 
@@ -79,7 +80,7 @@ namespace Web_Public.Controllers
             ViewBag.CText = CText;
             ViewBag.Title = "Cập nhật " + CText;
 
-            var record = await _peopleHandler.ReadAsync(id);
+            var record = await _peopleHandler.ReadAsync(id.ToString());
             if (record != null)
             {
                 return View(record);
@@ -88,11 +89,12 @@ namespace Web_Public.Controllers
             return RedirectToAction("Index", "People");
         }
         [HttpPost]
-        public async Task<ActionResult> Update(PeopleViewModels model)
+        public async Task<ActionResult> Update(PersonViewModels model)
         {
             if (ModelState.IsValid)
             {
-                var updateing = await _peopleHandler.ReadAsync(model.Id);
+                
+                var updateing = await _peopleHandler.ReadAsync(model.Id.ToString());
                 if (updateing == null)
                 {
                     ViewBag.Error = "Không tìm thấy bản ghi tương ứng";
@@ -106,7 +108,7 @@ namespace Web_Public.Controllers
                 }
 
                 var unit = await _uniteHandler.GetAllAsync();
-                ViewBag.UnitId = new SelectList(unit, "Id", "Name", "Code", model.UnitId);
+               // ViewBag.UnitId = new SelectList(unit, "Id", "Name", "Code", model.UnitCode);
 
                 ViewBag.Noti = "Cập nhật thành công";
                 return RedirectToAction("Index", "People");
@@ -117,7 +119,7 @@ namespace Web_Public.Controllers
         [HttpGet]
         public async Task<ActionResult> Detail(long id)
         {
-            var record = await _peopleHandler.ReadAsync(id);
+            var record = await _peopleHandler.ReadAsync(id.ToString());
             if(record == null)
             {
                 return Json(new { Message = "Không thế xem được!", IsSuccess = false });
@@ -128,7 +130,7 @@ namespace Web_Public.Controllers
         [HttpPost]
         public async Task<ActionResult> Delete(long id)
         {
-            var record = await _peopleHandler.DeleteAsync(id);
+            var record = await _peopleHandler.DeleteAsync(id.ToString());
             if (record <= 0)
             {
                 return Json(new { Message = "Thao tác không thành công", IsSuccess = false });

@@ -13,6 +13,6 @@ namespace Web_Public.Interface
         Task<int> UpdateAsync(UnitViewModels model);
         Task<IEnumerable<UnitViewModels>> GetAllAsync();
         Task<IEnumerable<UnitViewModels>> GetAllAsync(PageHelper page);
-        Task<int> DeleteAsync(long Id);
+        Task<int> DeleteAsync(string code);
     }
 }

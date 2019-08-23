@@ -202,6 +202,7 @@
     <Compile Include="Controllers\DichVuController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -210,11 +211,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handler\BaseHandler.cs" />
-    <Compile Include="Handler\PeopleHandler.cs" />
+    <Compile Include="Handler\PersonHandler.cs" />
     <Compile Include="Handler\RoleHandler.cs" />
     <Compile Include="Handler\UnitHandler.cs" />
     <Compile Include="Handler\UserHandler.cs" />
-    <Compile Include="Interface\IPeople.cs" />
+    <Compile Include="Interface\IBase.cs" />
     <Compile Include="Interface\IRole.cs" />
     <Compile Include="Interface\IUnit.cs" />
     <Compile Include="Interface\IUser.cs" />
@@ -6231,8 +6232,15 @@
     <Content Include="Views\People\Update.cshtml" />
     <Content Include="Views\People\Detail.cshtml" />
     <Content Include="Views\Unit\Table.cshtml" />
-    <Content Include="Views\Unit\Create.cshtml" />
+    <Content Include="Views\Unit\Create_OLD.cshtml" />
     <Content Include="Views\Unit\Index.cshtml" />
+    <Content Include="Views\Unit\Create.cshtml" />
+    <Content Include="Views\Unit\Update.cshtml" />
+    <Content Include="Views\Unit\SelectDonVi.cshtml" />
+    <Content Include="Views\Person\Create.cshtml" />
+    <Content Include="Views\Person\Index.cshtml" />
+    <Content Include="Views\Person\Table.cshtml" />
+    <Content Include="Views\Person\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

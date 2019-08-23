@@ -169,7 +169,7 @@ namespace Web_Public.Controllers
                     ProfilePicture = "",
                     Sex = new Random().Next(0, 1) == 0 ? false : true,
                     Address = "epuit",
-                    code = "15813100" + i.ToString(),
+                    Code = "15813100" + i.ToString(),
 
                 };
                 result += await _repository.GetRepository<Person>().CreateAsync(item, 0);

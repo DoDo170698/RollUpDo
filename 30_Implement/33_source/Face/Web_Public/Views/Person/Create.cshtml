@@ -1,4 +1,4 @@
-﻿@model Entities.ViewModels.UnitViewModels
+﻿@model Entities.ViewModels.PersonViewModels
 @{
     var Title = ViewBag.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -39,7 +39,7 @@
             <div class="tab-content" style="padding: 0;">
                 <div class="tab-pane active" id="tab_1_1">
                     <div class="portlet-body form">
-                        @using (Html.BeginForm("Create", "Unit", FormMethod.Post, new { id = "formDetail", @class = "form-horizontal form-bordered form-row-stripped" }))
+                        @using (Html.BeginForm("Create", "Person", FormMethod.Post, new { id = "formDetail", @class = "form-horizontal form-bordered form-row-stripped" }))
                         {
                             @Html.AntiForgeryToken()
                             <div class="form-body">
@@ -52,53 +52,80 @@
                                         @error
                                     </div>
                                 }
-                               
+
                                 <div class="form-group">
-                                    <lable class="col-md-3 control-label">Tên đơn vị cha</lable>
+                                    <lable class="col-md-3 control-label">Đơn vị</lable>
 
                                     <div class="col-md-9">
                                         @*@Html.DropDownList("CodeParent", Parent, new { @class = "form-control browser-default custom-select" })*@
-                                        @Html.DropDownList("CodeParent", null, "---Chọn đơn vị---", new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.CodeParent, "", new { @class = "text-danger" })
+                                        @Html.DropDownList("UnitCode", null, "---Chọn đơn vị---", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.UnitCode, "", new { @class = "text-danger" })
 
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <lable class="col-md-3 control-label">Mã đơn vị</lable>
+                                    <lable class="col-md-3 control-label">Mã @CText</lable>
                                     <div class="col-md-9">
                                         @Html.TextBoxFor(model => model.Code, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.Code)
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <lable class="col-md-3 control-label">Tên đơn vị </lable>
+                                    <lable class="col-md-3 control-label">Tên @CText </lable>
                                     <div class="col-md-9">
-                                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Name)
+                                        @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.FullName)
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <lable class="col-md-3 control-label">Mô tả đơn vị</lable>
+                                    <lable class="col-md-3 control-label">Địa chỉ @CText</lable>
                                     <div class="col-md-9">
-                                        @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Description)
+                                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Address)
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <lable class="col-md-3 control-label">Email đơn vị</lable>
+                                    <lable class="col-md-3 control-label">Email @CText</lable>
                                     <div class="col-md-9">
                                         @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.Email)
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <lable class="col-md-3 control-label">Địa chỉ</lable>
+                                    <lable class="col-md-3 control-label">Phone @CText</lable>
                                     <div class="col-md-9">
-                                        @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.DiaChi)
+                                        @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.PhoneNumber)
                                     </div>
                                 </div>
-
+                                <div class="form-group">
+                                    <lable class="col-md-3 control-label">CardId</lable>
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(model => model.CardId, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.CardId)
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <lable class="col-md-3 control-label">DateOfBirth</lable>
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.DateOfBirth)
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <lable class="col-md-3 control-label">Orther</lable>
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(model => model.Orther, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Orther)
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <lable class="col-md-3 control-label">PasspostId</lable>
+                                    <div class="col-md-9">
+                                        @Html.TextBoxFor(model => model.PasspostId, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.PasspostId)
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-actions">
                                 <div class="row">

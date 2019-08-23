@@ -16,7 +16,7 @@ namespace Entities.Models.SystemManage
         public long Id { get; set; }
         [Required]
         [Display(Name = "Mã nhân viên")]
-        public string code { get; set; }
+        public string Code { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập họ và tên!")]
         [Display(Name = "Họ và tên")]
@@ -54,15 +54,16 @@ namespace Entities.Models.SystemManage
         [StringLength(250, ErrorMessage = "Địa chỉ không được vượt quá 250 ký tự!")]
         public string Address { get; set; }
 
-        public long UnitId { get; set; }
-        [ForeignKey("UnitId")]
+        public string UnitCode { get; set; }
+        [ForeignKey("UnitCode")]
         public virtual DonVi DonVi { get; set; }
 
-        //public string CardId { get; set; }
-        //public string PasspostId { get; set; }
-        //public string Orther { get; set; }
+        public string CardId { get; set; }
+        public string PasspostId { get; set; }
+        public string Orther { get; set; }
 
-        //public bool? IsDeleted { get; set; }
+        public bool? IsDeleted { get; set; }
+        public DateTime? CreateDate { get; set; }
 
         public string Describe()
         {

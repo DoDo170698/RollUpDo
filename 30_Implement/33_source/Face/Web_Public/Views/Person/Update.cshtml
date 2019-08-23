@@ -1,0 +1,190 @@
+﻿@model Entities.ViewModels.PersonViewModels
+@{
+    var Title = ViewBag.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var CName = ViewBag.CName;
+    var CText = ViewBag.CText;
+    string CRoute = "/" + CName;
+    string CReateRoute = CRoute + "/Create";
+    ViewBag.Home = CRoute + "/Index";
+    string error = ViewBag.Error ?? "";
+    SelectList Parent = ViewBag.CodeParent == null ? new SelectList(new List<string>()) : ViewBag.CodeParent as SelectList;
+}
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <i class="fa fa-home"></i>
+        <a route="/" href="@ViewBag.Home" class="uppercase">@CText</a>
+        <i class="fa fa-angle-right"></i>
+    </li>
+    <li>
+        <a route="@CRoute">@Title</a>
+        <i class="fa fa-angle-right"></i>
+    </li>
+
+</ul>
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-globe theme-font hide"></i>
+            <span class="caption-subject uppercase">@CText</span>
+        </div>
+    </div>
+    <div class="portlet-body" id="account_detail">
+        <div class="tabbable-custom nav-justified">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab_1_1" data-toggle="tab"> Thông tin @CText</a>
+                </li>
+            </ul>
+            <div class="tab-content" style="padding: 0;">
+                <div class="tab-pane active" id="tab_1_1">
+                    <div class="portlet-body form">
+                        @using (Html.BeginForm("Update", "Person", FormMethod.Post, new { id = "formDetail", @class = "form-horizontal form-bordered form-row-stripped" }))
+                        {
+                            @Html.AntiForgeryToken()
+                        <div class="form-body">
+                            @if (!ViewData.ModelState.IsValid)
+                            {
+                                <div class="alert alert-danger">
+                                    <button data-close="alert" class="close"></button>
+                                    @Html.ValidationSummary(true)
+                                    <br />
+                                    @error
+                                </div>
+                            }
+                            <div class="form-group">
+                                <div class="col-md-3"> </div>
+
+                                <div class="col-md-9">
+                                    <label class="mt-checkbox mt-checkbox-outline">
+                                        Hiển thi tất cả đơn vị
+                                        <input name="test" type="checkbox" value="1" id="showAllUnit">
+                                        <span></span>
+                                    </label>
+                                </div>
+
+                            </div>
+                            @Html.HiddenFor(model => model.Id, new { @class = "control-label" })
+                            
+                            <div class="form-group">
+                                <lable class="col-md-3 control-label">Đơn vị</lable>
+
+                                <div class="col-md-9" id="AjaxDropDow">
+                                    @Html.DropDownList("UnitCode", null, "---Chọn đơn vị---", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.UnitCode, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <lable class="col-md-3 control-label">Mã @CText</lable>
+                                <div class="col-md-9">
+                                    @Html.TextBox("Code",Model.Code, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Code)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <lable class="col-md-3 control-label">Tên @CText </lable>
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(model => model.FullName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.FullName)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <lable class="col-md-3 control-label">Địa chỉ @CText</lable>
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Address)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <lable class="col-md-3 control-label">Email @CText</lable>
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <lable class="col-md-3 control-label">Phone @CText</lable>
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PhoneNumber)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <lable class="col-md-3 control-label">CardId</lable>
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(model => model.CardId, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CardId)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <lable class="col-md-3 control-label">DateOfBirth</lable>
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DateOfBirth)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <lable class="col-md-3 control-label">Orther</lable>
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(model => model.Orther, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Orther)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <lable class="col-md-3 control-label">PasspostId</lable>
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(model => model.PasspostId, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PasspostId)
+                                </div>
+                            </div>
+
+                        </div>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button type="submit" class="btn green-dark"><i class="fa fa-check"></i>Ghi nhận</button>
+                                        <a route="@CRoute" href="@ViewBag.Home" class="btn default" id="cancelBtn"><i class="fa fa-refresh"></i>Quay Lại</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $('#showAllUnit').change(function () {
+        let parent ;
+        if (this.checked)
+        {
+            parent = '';
+        }
+        else
+        {
+            parent = $('#CodeParent').val();
+        }
+        //let parent = (this.checked) ? "" : $('#CodeParent').val();
+        $.ajax({
+            url: '@CRoute/SelectDonVi',
+            data: { parentCode: parent, curentCode: $('#CodeParent').val()},
+            contentType: 'application/json',
+            dataType: 'html',
+            type: 'GET',
+            cache: false,
+            success: function (data) {
+                $('#AjaxDropDow').html(data);
+            },
+            error: function (errorThrown) {
+                alert('Lỗi khi load danh sách đơn vị :(');
+            },
+            complete: function (result) {
+                App.unblockUI();
+            }
+        });
+    });
+</script>

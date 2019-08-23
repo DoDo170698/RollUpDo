@@ -8,12 +8,15 @@ using System.Threading.Tasks;
 
 namespace Entities.ViewModels
 {
-    public class PeopleViewModels
+    public class PersonViewModels
     {
-        [Display(Name = "Mã nhân viên")]
-        public string code { get; set; }
 
         public long Id { get; set; }
+
+        [Display(Name = "Mã nhân viên")]
+        public string Code { get; set; }
+
+        
 
         [Required(ErrorMessage = "Vui lòng nhập họ và tên!")]
         [Display(Name = "Họ và tên")]
@@ -25,7 +28,9 @@ namespace Entities.ViewModels
         public string Email { get; set; }
 
         //[StringLength(20)]
-        public long UnitId { get; set; }
+        public string UnitCode { get; set; }
+        [ForeignKey("UnitCode")]
+        public virtual UnitViewModels DonVi { get; set; }
 
         [Display(Name = "Ảnh đại diện")]
         public string ProfilePicture { get; set; }
@@ -42,5 +47,13 @@ namespace Entities.ViewModels
         [Display(Name = "Địa chỉ")]
         [StringLength(250, ErrorMessage = "Địa chỉ không được vượt quá 250 ký tự!")]
         public string Address { get; set; }
+        public string CardId { get; set; }
+        public string PasspostId { get; set; }
+        public string Orther { get; set; }
+        [Display(Name = "Đã xóa")]
+        public bool? IsDeleted { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime? CreateDate { get; set; }
     }
 }

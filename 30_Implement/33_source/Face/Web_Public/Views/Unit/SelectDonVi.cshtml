@@ -1,0 +1,7 @@
+﻿@model Entities.ViewModels.UnitViewModels
+@{
+    Layout = null;// "~/Views/Shared/_Layout.cshtml";
+}
+@Html.DropDownList("CodeParent", null, "---Chọn đơn vị---", new { @class = "form-control" })
+@Html.ValidationMessageFor(model => model.CodeParent, "", new { @class = "text-danger" })
+
