@@ -25,7 +25,7 @@ namespace ClientApp
         public FrmMain()
         {
             InitializeComponent();
-            _client = new HttpClient();
+            //_client = new HttpClient();
         }
 
         private async void button1_Click(object sender, EventArgs e)

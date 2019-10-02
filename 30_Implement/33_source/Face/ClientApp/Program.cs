@@ -19,7 +19,7 @@ namespace ClientApp
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDetect());
+            Application.Run(new FrmMain());
         }
     }
 }
